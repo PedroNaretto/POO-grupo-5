@@ -1,0 +1,7 @@
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\bin\Debug\Bitmons1.exe.config
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\bin\Debug\Bitmons1.exe
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\bin\Debug\Bitmons1.pdb
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\obj\Debug\Bitmons1.csproj.CoreCompileInputs.cache
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\obj\Debug\Bitmons1.exe
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\obj\Debug\Bitmons1.pdb
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Bitmons1\Bitmons1\obj\Debug\Bitmons1.csprojResolveAssemblyReference.cache
