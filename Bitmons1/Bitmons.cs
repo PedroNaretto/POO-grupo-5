@@ -15,7 +15,7 @@ namespace Bitmons1
         {
         }
 
-        public void GenerarBitmons()
+        public void Spawn()
         {
             for (int i = 0; i < bitmons.GetUpperBound(0); i++)
             {
@@ -23,7 +23,7 @@ namespace Bitmons1
                 {
                     if ( rnd.Next(100) <= 50)
                     {
-                        bitmons[i, c].Add(new Bitmon(rnd.Next(10), rnd.Next(10), rnd.Next(10), rnd.Next(10)));
+                        bitmons[i, c].Add(new Bitmon(rnd.Next(10), rnd.Next(10), rnd.Next(10)));
                     }
                 }
             }

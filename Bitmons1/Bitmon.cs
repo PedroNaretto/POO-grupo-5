@@ -11,14 +11,18 @@ namespace Bitmons1
         public int TiempoVida;
         public int PuntosDeVida;
         public int PuntosDeAtaque;
-        public int Hijos;
+        public int Hijos = 0;
 
-        public Bitmon(int tiempoVida, int puntosDeVida, int puntosDeAtaque, int hijos)
+        public Bitmon(int tiempoVida, int puntosDeVida, int puntosDeAtaque)
         {
             TiempoVida = tiempoVida;
             PuntosDeVida = puntosDeVida;
             PuntosDeAtaque = puntosDeAtaque;
-            Hijos = hijos;
+        }
+
+        public int atacar(Bitmon bitmon)
+        {
+            return 0;
         }
     }
 }
