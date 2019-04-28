@@ -9,19 +9,37 @@ namespace Bitmons1
     class Mapa
     {
         static Random rnd = new Random();
-        public Terreno[,] mapa = new Terreno[rnd.Next(9,20), rnd.Next(9, 20)];
+        public Terreno[,] mapa;
 
         public Mapa()
         {
         }
 
-        public void GenerarMapa ()
+        public void GenerarMapa (int filas, int columnas)
         {
-            for (int i = 0; i < mapa.GetUpperBound(0); i++)
+            mapa = new Terreno[filas, columnas];
+
+            Console.WriteLine("Generando mapa, escoja el tipo de terrenos por casilla:");
+            for (int i = 0; i < filas; i++)
             {
-                for (int c = 0; c < mapa.GetUpperBound(1); c++)
+                for (int j = 0; j < columnas; j++)
                 {
-                    mapa[i, c] = new Terreno();
+                    Console.WriteLine($"Casilla {i}, {j}");
+                    int t;
+                    List<string> tipos = new List<string> { "tierra", "pasto", "bosque","agua", "hielo", "lava" };
+                    Console.WriteLine("Escoja tipo el tipo de terreno:");
+                    Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
+                    string ts = Console.ReadLine();
+                    int.TryParse(ts, out t);
+                    while (t.ToString() != ts || t < 1 || t > 6)
+                    {
+                        Console.WriteLine("Escoja tipo el tipo de terreno valido:");
+                        Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
+                        ts = Console.ReadLine();
+                        int.TryParse(ts, out t);
+                    }
+
+                    mapa[i, j] = new Terreno(tipos[t-1]);
                 }
             }
         }
