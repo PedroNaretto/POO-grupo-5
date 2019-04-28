@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Bitmons1
 {
-    class Mapa
+    public class Mapa
     {
         static Random rnd = new Random();
-        public Terreno[,] mapa;
+        public Terreno[,] Mterrenos;
 
         public Mapa()
         {
@@ -17,7 +17,7 @@ namespace Bitmons1
 
         public void GenerarMapa (int filas, int columnas)
         {
-            mapa = new Terreno[filas, columnas];
+            Mterrenos = new Terreno[filas, columnas];
 
             Console.WriteLine("Generando mapa, escoja el tipo de terrenos por casilla:");
             for (int i = 0; i < filas; i++)
@@ -26,7 +26,7 @@ namespace Bitmons1
                 {
                     Console.WriteLine($"Casilla {i}, {j}");
                     int t;
-                    List<string> tipos = new List<string> { "tierra", "pasto", "bosque","agua", "hielo", "lava" };
+                    List<string> tipos = new List<string> { "Tierra", "Pasto", "Bosque","Agua", "Hielo", "Lava" };
                     Console.WriteLine("Escoja tipo el tipo de terreno:");
                     Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
                     string ts = Console.ReadLine();
@@ -39,38 +39,38 @@ namespace Bitmons1
                         int.TryParse(ts, out t);
                     }
 
-                    mapa[i, j] = new Terreno(tipos[t-1]);
+                    Mterrenos[i, j] = new Terreno(tipos[t-1]);
                 }
             }
         }
 
         public void MostrarMapa()
         {
-            for (int i = 0; i < mapa.GetUpperBound(0); i++)
+            for (int i = 0; i <= Mterrenos.GetUpperBound(0); i++)
             {
-                for (int c = 0; c < mapa.GetUpperBound(1); c++)
+                for (int c = 0; c <= Mterrenos.GetUpperBound(1); c++)
                 {
-                    if (mapa[i, c].tipo == "tierra")
+                    if (Mterrenos[i, c].tipo == "Tierra")
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow;
                         Console.Write("   ");
                     }
-                    else if (mapa[i, c].tipo == "pasto")
+                    else if (Mterrenos[i, c].tipo == "Pasto")
                     {
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.Write("   ");
                     }
-                    else if (mapa[i, c].tipo == "agua")
+                    else if (Mterrenos[i, c].tipo == "Agua")
                     {
                         Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write("   ");
                     }
-                    else if (mapa[i, c].tipo == "hielo")
+                    else if (Mterrenos[i, c].tipo == "Hielo")
                     {
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.Write("   ");
                     }
-                    else if (mapa[i, c].tipo == "lava")
+                    else if (Mterrenos[i, c].tipo == "Lava")
                     {
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.Write("   ");

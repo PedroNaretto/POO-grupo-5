@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bitmons1
 {
-    class Controlador
+    public class Controlador
     {
         Mapa cMapa = new Mapa();
         Bitmons cBitmons = new Bitmons();
@@ -23,9 +23,9 @@ namespace Bitmons1
 
         public void Entorno()
         {
-            for (int i = 0; i < cMapa.mapa.GetUpperBound(0); i++)
+            for (int i = 0; i < cMapa.Mterrenos.GetUpperBound(0); i++)
             {
-                for (int j = 0; j < cMapa.mapa.GetUpperBound(1); j++)
+                for (int j = 0; j < cMapa.Mterrenos.GetUpperBound(1); j++)
                 {
 
                 }

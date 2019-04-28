@@ -19,39 +19,6 @@ namespace Bitmons1
         public List<string> afinidad;
         public int movimientos;
 
-        //retorna el multiplicador del bitmon
-        public int Atacar(Bitmon bitmon)
-        {
-            int multiplicador = 0;
-
-            //multiplicador varia por especie
-            if (bitmon.especie == "Taplan")
-            {
-                multiplicador = 10;
-            }
-            if (bitmon.especie == "Wetar")
-            {
-                multiplicador = 15;
-            }
-            if (bitmon.especie == "Gofue")
-            {
-                multiplicador = 12;
-            }
-            if (bitmon.especie == "Dorvalo")
-            {
-                multiplicador = 20;
-            }
-            if (bitmon.especie == "Doti")
-            {
-                multiplicador = 5;
-            }
-            if (bitmon.especie == "Ent")
-            {
-                multiplicador = 0;
-            }
-            return PuntosDeAtaque * multiplicador;
-        }
-
         //constructor de los bitmons
         public Bitmon(string especie)
         {
@@ -126,6 +93,39 @@ namespace Bitmons1
 
             //cada bitmon parte con cero hijos
             Hijos = 0;
+        }
+
+        //retorna el multiplicador del bitmon
+        public int Atacar(Bitmon bitmon)
+        {
+            int multiplicador = 0;
+
+            //multiplicador varia por especie
+            if (bitmon.especie == "Taplan")
+            {
+                multiplicador = 10;
+            }
+            if (bitmon.especie == "Wetar")
+            {
+                multiplicador = 15;
+            }
+            if (bitmon.especie == "Gofue")
+            {
+                multiplicador = 12;
+            }
+            if (bitmon.especie == "Dorvalo")
+            {
+                multiplicador = 20;
+            }
+            if (bitmon.especie == "Doti")
+            {
+                multiplicador = 5;
+            }
+            if (bitmon.especie == "Ent")
+            {
+                multiplicador = 0;
+            }
+            return PuntosDeAtaque * multiplicador;
         }
     }
 }

@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Bitmons1
 {
-    class Terreno
+    public class Terreno
     {
         public string tipo;
 
         public Terreno(string tipo)
         {
             this.tipo = tipo;
+        }
+
+        public string getTerreno()
+        {
+            return tipo;
         }
     }
 }

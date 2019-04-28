@@ -88,6 +88,86 @@ namespace Bitmons1
 
         }
 
+        public void movimientos(Mapa mapa)
+        {
+            for( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
+                {
+                    foreach(Bitmon bitmon in bitmons_simulacion[i,j])
+                    {
+                        if (bitmon.especie == "Wetar")
+                        {
+                            int m = 1;
+                            while (m > 0)
+                            {
+                                int m1 = rnd.Next(-1, 2);
+                                int m2 = rnd.Next(-1, 2);
+                                try
+                                {
+                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua")
+                                    {
+                                        bitmons_simulacion[i + m1, j + m2].Add(bitmon);
+                                        bitmons_simulacion[i, j].Remove(bitmon);
+                                    }
+                                    m -= 1;
+                                }
+                                catch
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                        else if (bitmon.especie == "Dorbalo")
+                        {
+                            int m = 2;
+                            while (m > 0)
+                            {
+                                int m1 = rnd.Next(-1, 2);
+                                int m2 = rnd.Next(-1, 2);
+                                try
+                                {
+                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua")
+                                    {
+                                        bitmons_simulacion[i + m1, j + m2].Add(bitmon);
+                                        bitmons_simulacion[i, j].Remove(bitmon);
+                                    }
+                                    m -= 1;
+                                }
+                                catch
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                        else if (bitmon.especie == "Ent")
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            int m = 1;
+                            while (m > 0)
+                            {
+                                int m1 = rnd.Next(-1, 2);
+                                int m2 = rnd.Next(-1, 2);
+                                try
+                                {
+                                    bitmons_simulacion[i + m1, j + m2].Add(bitmon);
+                                    bitmons_simulacion[i, j].Remove(bitmon);
+                                    m -= 1;
+                                }
+                                catch
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public void Peleas(Bitmon bitmon1, Bitmon bitmon2)
         {
             //FALTA: misma celda con otro que no tiene afinidad -> pelean

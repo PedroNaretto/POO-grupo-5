@@ -15,9 +15,9 @@ namespace Bitmons1
             //datos que ingresa el usuario
             Console.WriteLine("Indique la configuracion inicial: ");
             Console.WriteLine("Indique el tamaño del mapa:");
-            Console.WriteLine("Largo: ");
+            Console.Write("Largo: ");
             int largo = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ancho: ");
+            Console.Write("Ancho: ");
             int ancho = Convert.ToInt32(Console.ReadLine());
 
             Bitmons bitmons = new Bitmons();
@@ -30,8 +30,8 @@ namespace Bitmons1
             Console.WriteLine("Periodo de tiempo en meses de la simulacion: ");
             int tiempo_simulacion = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine(mapa.mapa.GetUpperBound(0));
-            Console.WriteLine(mapa.mapa.GetUpperBound(1));
+            Console.WriteLine(mapa.Mterrenos.GetUpperBound(0));
+            Console.WriteLine(mapa.Mterrenos.GetUpperBound(1));
 
             mapa.MostrarMapa();
             Console.ReadKey();
