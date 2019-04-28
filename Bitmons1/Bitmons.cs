@@ -11,50 +11,81 @@ namespace Bitmons1
         Random rnd = new Random();
 
         //lista con los bitmons que se van a bithalla
-        public List<Bitmon> bithalla;
-
-        //lista con los bitmons de la simulacion
-        public List<Bitmon> bitmons_s;
+        public List<Bitmon> bithalla = new List<Bitmon> { };
+        //Lista con los bitmons en la simulacion
+        public List<Bitmon> bitmons_s = new List<Bitmon> { };
+        //Array con los bitmons de la simulacion
+        public List<Bitmon>[,] bitmons_simulacion;
 
         //constructor de Bitmons
         public Bitmons()
         {
         }
 
-        public void Spawn(int largo, int ancho)
+        public void Spawn(int filas, int columnas)
         {
             //creacion de arrays para los bitmons y terrenos del usuario
-            String[,] terrenos_simulacion = new string[ancho, largo];
-            List<Bitmon>[,] bitmons_simulacion = new List<Bitmon>[ancho, largo];
-            for (int i = 0; i < largo; i++)
+            bitmons_simulacion = new List<Bitmon>[filas, columnas];
+
+            for (int i = 0; i < filas; i++)
             {
-                for (int j = 0; j < ancho; j++)
+                for (int j = 0; j < columnas; j++)
                 {
-                    Console.WriteLine("Tipo de terreno en cada posicion: ");
-                    string tipo_terreno = Console.ReadLine();
-
-                    //agrega el tipo de terreno que la persona ingresa al array
-                    terrenos_simulacion[i, j] = (tipo_terreno);
-
-                    Console.WriteLine("Bitmon inicial en cada posicion: ");
-                    string clase_bitmon = Console.ReadLine();
-                    if (clase_bitmon != " ")
-                    {
-                        //crea el bitmon de la clase que el usuario ingreso
-                        Bitmon bitmon_nuevo = new Bitmon(clase_bitmon);
-
-                        //agrega el bitmon creado al array de bitmons
-                        bitmons_simulacion[i, j].Add(bitmon_nuevo);
-
-                        //agrega el bitmon creado a la lista de bitmons
-                        bitmons_s.Add(bitmon_nuevo);
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    bitmons_simulacion[i, j] = new List<Bitmon> { };
                 }
             }
+
+            while (true)
+            {
+                int f;
+                int c;
+                int t;
+
+                Console.WriteLine("Generando mapa \n1.-Ingresar Bitmon \n2.-Continuar");
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("Generando Bitmons, escoja fila y columna donde para crear Bitmon:");
+                    Console.Write("Fila: ");
+                    string fs = Console.ReadLine();
+                    int.TryParse(fs, out f);
+                    while (f.ToString() != fs || f < 1 || f > filas)
+                    {
+                        Console.Write("Numero de fila fuera de rango \nFila: ");
+                        fs = Console.ReadLine();
+                        int.TryParse(fs, out f);
+                    }
+                    Console.Write("Columna: ");
+                    string cs = Console.ReadLine();
+                    int.TryParse(cs, out c);
+                    while (c.ToString() != cs || c < 1 || c > filas)
+                    {
+                        Console.Write("Numero de columna fuera de rango \nColumna: ");
+                        cs = Console.ReadLine();
+                        int.TryParse(cs, out c);
+                    }
+                    List<string> tipos = new List<string> { "Taplan", "Wetar", "Gofue", "Dorvalo", "Doti", "Ent" };
+                    Console.WriteLine("Introdusca la clase de bitmon que desea:");
+                    Console.WriteLine("1.-Taplan \n2.-Wetar \n3.-Gofue \n4.-Dorvalo \n5.-Doti \n6.-Ent");
+                    string ts = Console.ReadLine();
+                    int.TryParse(ts, out t);
+                    while (t.ToString() != ts || t < 1 || t > 6)
+                    {
+                        Console.WriteLine("Introdusca clase de Bitmon valida:");
+                        Console.WriteLine("1.-Taplan \n2.-Wetar \n3.-Gofue \n4.-Dorvalo \n5.-Doti \n6.-Ent");
+                        ts = Console.ReadLine();
+                        int.TryParse(ts, out t);
+                    }
+
+                    Bitmon b = new Bitmon(tipos[t - 1]);
+                    bitmons_simulacion[f - 1, c - 1].Add(b);
+                    bitmons_s.Add(b);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
         }
 
         public void Peleas(Bitmon bitmon1, Bitmon bitmon2)

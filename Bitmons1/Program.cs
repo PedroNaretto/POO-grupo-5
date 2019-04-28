@@ -21,14 +21,14 @@ namespace Bitmons1
             int ancho = Convert.ToInt32(Console.ReadLine());
 
             Bitmons bitmons = new Bitmons();
+            Mapa mapa = new Mapa();
+
+            mapa.GenerarMapa(largo, ancho);
             bitmons.Spawn(largo, ancho);
 
             //con esto hacer el for de la simulacion
             Console.WriteLine("Periodo de tiempo en meses de la simulacion: ");
             int tiempo_simulacion = Convert.ToInt32(Console.ReadLine());
-
-            Mapa mapa = new Mapa();
-            mapa.GenerarMapa();
 
             Console.WriteLine(mapa.mapa.GetUpperBound(0));
             Console.WriteLine(mapa.mapa.GetUpperBound(1));

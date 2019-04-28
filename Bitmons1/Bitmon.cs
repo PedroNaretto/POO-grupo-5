@@ -49,7 +49,7 @@ namespace Bitmons1
             {
                 multiplicador = 0;
             }
-            return multiplicador;
+            return PuntosDeAtaque * multiplicador;
         }
 
         //constructor de los bitmons
@@ -122,7 +122,7 @@ namespace Bitmons1
 
             //no especifica hasta que numero es el random
             PuntosDeVida = rnd.Next(0, 1001);
-            PuntosDeAtaque = rnd.Next(0, 501);
+            PuntosDeAtaque = rnd.Next(0, 51);
 
             //cada bitmon parte con cero hijos
             Hijos = 0;
