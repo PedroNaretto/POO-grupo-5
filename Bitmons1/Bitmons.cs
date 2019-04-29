@@ -31,6 +31,11 @@ namespace Bitmons1
         {
             return bithalla;
         }
+        public List<Bitmon> GetLista()
+        {
+            return bitmons_s;
+        }
+
 
         //configuracion inicial del mapa
         public void Spawn(int filas, int columnas)
@@ -186,8 +191,6 @@ namespace Bitmons1
         //relacion de pelea entre bitmons
         public void Peleas(Bitmon bitmon1, Bitmon bitmon2)
         {
-            //FALTA: misma celda con otro que no tiene afinidad -> pelean
-
             //bitmon ataque simultaneo
             foreach (string bitmon in bitmon1.rivalidad)
             {
@@ -226,16 +229,12 @@ namespace Bitmons1
 
         //relacion de reproduccion entre bitmons
         //luego de reproducirse recuperan el 30% de tiempo de vida
-        public void Relaciones(Bitmon bitmon1, Bitmon bitmon2)
+        public void Relaciones(Bitmon bitmon1, Bitmon bitmon2, int filas, int columnas)
         {
-            //FALTA: misma celda con otro que tiene afinidad -> se reproducen
-
             if (bitmon1.Hijos != 0 || bitmon2.Hijos != 0)
             {
                 //probabilidad de la especie del hijo
                 int IP_hijo = rnd.Next(0, 101);
-
-                //FALTA:hijo aparece en un lugar random
 
                 //para calcular la probabilidad que sea de un padre o el otro
                 int total = bitmon1.Hijos + bitmon2.Hijos + 2;
@@ -281,6 +280,22 @@ namespace Bitmons1
                         bitmon1.Hijos += 1;
                         bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                         bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+                    }
+                }
+                bool a = true;
+                while (a == true)
+                {
+                    int fila = rnd.Next(0, int filas - 1);
+                    int colun = rnd.Next(0, int columnas - 1);
+                    if (bitmons_simulacion[colun, fila][1] == null)
+                    {
+                        bitmons_simulacion[colun, fila].Add(hijo);
+                        bitmons_s.Add(hijo);
+                        a = false;
+                    }
+                    else
+                    {
+                        continue;
                     }
                 }
             }
