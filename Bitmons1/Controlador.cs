@@ -12,7 +12,7 @@ namespace Bitmons1
         {
         }
 
-        public void generarMapas(int filas, int columnas,Mapa cMapa, Bitmons cBitmons)
+        public void generarMapas(int filas, int columnas, Mapa cMapa, Bitmons cBitmons)
         {
             cMapa.GenerarMapa(filas, columnas);
             cBitmons.Spawn(filas, columnas);

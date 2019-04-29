@@ -15,6 +15,7 @@ namespace Bitmons1
         {
         }
 
+        //Metodo que le pide al usuario el tipo de terreno en cada indice del array
         public void GenerarMapa (int filas, int columnas)
         {
             Mterrenos = new Terreno[filas, columnas];
