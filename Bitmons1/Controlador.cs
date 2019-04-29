@@ -12,6 +12,7 @@ namespace Bitmons1
         {
         }
 
+        //para generar el mapa
         public void generarMapas(int filas, int columnas, Mapa cMapa, Bitmons cBitmons)
         {
             cMapa.GenerarMapa(filas, columnas);
@@ -40,5 +41,6 @@ namespace Bitmons1
                 }
             }
         }
+
     }
 }
