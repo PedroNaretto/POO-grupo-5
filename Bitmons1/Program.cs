@@ -11,6 +11,7 @@ namespace Bitmons1
 
         static void Main(string[] args)
         {
+            Random rnd = new Random();
             //datos que ingresa el usuario
             Console.WriteLine("Indique la configuracion inicial: ");
             Console.WriteLine("Indique el tamaño del mapa:");
@@ -30,19 +31,53 @@ namespace Bitmons1
             //bitmon permanece un mes en un terreno con el cual tiene debilidad, entonces su tiempo de vida - 2 meses, en otro caso - 1 mes
             Console.WriteLine("Periodo de tiempo en meses de la simulacion: ");
             int tiempo_simulacion = Convert.ToInt32(Console.ReadLine());
+            List<Bitmon>[,] bitmons_simulacion = bitmons.GetArray();
+            List<Bitmon> bitmons_s = bitmons.GetLista();
             for (int meses = 0; meses < tiempo_simulacion; meses++)
             {
+                if (meses%3 == 0)
+                {
+                    Bitmon bitmon = new Bitmon("Ent");
+                    bool a = true;
+                    while (a == true)
+                    {
+                        int fila = rnd.Next(0, ancho - 1);
+                        int colun = rnd.Next(0, largo - 1);
+                        if (bitmons_simulacion[colun, fila][1] == null)
+                        {
+                            bitmons_simulacion[colun, fila].Add(bitmon);
+                            bitmons_s.Add(bitmon);
+                            a = false;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                for(int a = 0; largo>a; a++)
+                {
+                    for (int b = 0; ancho > b; a++)
+                    {
 
+                    }
+
+                }
+                bitmons.movimientos(mapa);
+                mapa.MostrarMapa();
+                Console.ReadKey();
             }
 
             Console.WriteLine(mapa.Mterrenos.GetUpperBound(0));
             Console.WriteLine(mapa.Mterrenos.GetUpperBound(1));
 
+<<<<<<< HEAD
             Console.ReadKey();
+=======
+>>>>>>> f293d40dde6a6fcdacd65712b4f4da58274a2a2c
 
             //tiempo vida promedio de bitmon
             int suma_tvida = 0;
-            List<Bitmon>[,] bitmons_simulacion = bitmons.GetArray();
             int total = bitmons_simulacion.Length;
             foreach (Bitmon bitmon in bitmons_simulacion)
             {
