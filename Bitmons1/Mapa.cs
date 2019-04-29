@@ -27,15 +27,15 @@ namespace Bitmons1
                 {
                     Console.WriteLine($"Casilla {i}, {j}");
                     int t;
-                    List<string> tipos = new List<string> { "Tierra", "Pasto", "Bosque","Agua", "Hielo", "Lava" };
+                    List<string> tipos = new List<string> { "Desierto", "Vegetacion","Acuatico", "Nieve", "Volcan" };
                     Console.WriteLine("Escoja tipo el tipo de terreno:");
-                    Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
+                    Console.WriteLine("1.-Desierto \n2.-Vegetacion \n3.-Acuatico \n4.-Nieve \n5.-Volcan");
                     string ts = Console.ReadLine();
                     int.TryParse(ts, out t);
                     while (t.ToString() != ts || t < 1 || t > 6)
                     {
                         Console.WriteLine("Escoja tipo el tipo de terreno valido:");
-                        Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
+                        Console.WriteLine("1.-Desierto \n2.-Vegetacion \n3.-Acuatico \n4.-Nieve \n6.-Volcan");
                         ts = Console.ReadLine();
                         int.TryParse(ts, out t);
                     }
