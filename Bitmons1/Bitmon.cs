@@ -103,15 +103,15 @@ namespace Bitmons1
             //multiplicador varia por especie
             if (bitmon.especie == "Taplan")
             {
-                multiplicador = 10;
+                multiplicador = 12;
             }
             if (bitmon.especie == "Wetar")
             {
-                multiplicador = 15;
+                multiplicador = 8;
             }
             if (bitmon.especie == "Gofue")
             {
-                multiplicador = 12;
+                multiplicador = 10;
             }
             if (bitmon.especie == "Dorvalo")
             {
@@ -119,11 +119,11 @@ namespace Bitmons1
             }
             if (bitmon.especie == "Doti")
             {
-                multiplicador = 5;
+                multiplicador = 6;
             }
             if (bitmon.especie == "Ent")
             {
-                multiplicador = 0;
+               multiplicador = 3;
             }
             return multiplicador;
         }
