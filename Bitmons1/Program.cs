@@ -11,7 +11,6 @@ namespace Bitmons1
 
         static void Main(string[] args)
         {
-
             //datos que ingresa el usuario
             Console.WriteLine("Indique la configuracion inicial: ");
             Console.WriteLine("Indique el tamaño del mapa:");
@@ -39,7 +38,6 @@ namespace Bitmons1
             Console.WriteLine(mapa.Mterrenos.GetUpperBound(0));
             Console.WriteLine(mapa.Mterrenos.GetUpperBound(1));
 
-            mapa.MostrarMapa();
             Console.ReadKey();
 
             //tiempo vida promedio de bitmon
