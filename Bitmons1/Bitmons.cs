@@ -22,6 +22,17 @@ namespace Bitmons1
         {
         }
 
+        //para conseguir la lista de bitmons
+        public List<Bitmon>[,] GetArray()
+        {
+            return bitmons_simulacion;
+        }
+        public List<Bitmon> GetBithalla()
+        {
+            return bithalla;
+        }
+
+        //configuracion inicial del mapa
         public void Spawn(int filas, int columnas)
         {
             //creacion de arrays para los bitmons y terrenos del usuario
@@ -44,7 +55,7 @@ namespace Bitmons1
                 Console.WriteLine("Generando mapa \n1.-Ingresar Bitmon \n2.-Continuar");
                 if (Console.ReadLine() == "1")
                 {
-                    Console.WriteLine("Generando Bitmons, escoja fila y columna donde para crear Bitmon:");
+                    Console.WriteLine("Generando Bitmons, escoja fila y columna donde crear Bitmon:");
                     Console.Write("Fila: ");
                     string fs = Console.ReadLine();
                     int.TryParse(fs, out f);
@@ -64,13 +75,13 @@ namespace Bitmons1
                         int.TryParse(cs, out c);
                     }
                     List<string> tipos = new List<string> { "Taplan", "Wetar", "Gofue", "Dorvalo", "Doti", "Ent" };
-                    Console.WriteLine("Introdusca la clase de bitmon que desea:");
+                    Console.WriteLine("Introduzca la clase de bitmon que desea:");
                     Console.WriteLine("1.-Taplan \n2.-Wetar \n3.-Gofue \n4.-Dorvalo \n5.-Doti \n6.-Ent");
                     string ts = Console.ReadLine();
                     int.TryParse(ts, out t);
                     while (t.ToString() != ts || t < 1 || t > 6)
                     {
-                        Console.WriteLine("Introdusca clase de Bitmon valida:");
+                        Console.WriteLine("Introduzca clase de Bitmon valida:");
                         Console.WriteLine("1.-Taplan \n2.-Wetar \n3.-Gofue \n4.-Dorvalo \n5.-Doti \n6.-Ent");
                         ts = Console.ReadLine();
                         int.TryParse(ts, out t);
@@ -88,6 +99,7 @@ namespace Bitmons1
 
         }
 
+        //movimiento x mes para los bitmons
         public void movimientos(Mapa mapa)
         {
             for( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
@@ -118,7 +130,7 @@ namespace Bitmons1
                                 }
                             }
                         }
-                        else if (bitmon.especie == "Dorbalo")
+                        else if (bitmon.especie == "Dorvalo")
                         {
                             int m = 2;
                             while (m > 0)
@@ -168,6 +180,7 @@ namespace Bitmons1
             }
         }
 
+        //relacion de pelea entre bitmons
         public void Peleas(Bitmon bitmon1, Bitmon bitmon2)
         {
             //FALTA: misma celda con otro que no tiene afinidad -> pelean
@@ -208,6 +221,8 @@ namespace Bitmons1
             }
         }
 
+        //relacion de reproduccion entre bitmons
+        //luego de reproducirse recuperan el 30% de tiempo de vida
         public void Relaciones(Bitmon bitmon1, Bitmon bitmon2)
         {
             //FALTA: misma celda con otro que tiene afinidad -> se reproducen
@@ -217,7 +232,6 @@ namespace Bitmons1
                 //probabilidad de la especie del hijo
                 int IP_hijo = rnd.Next(0, 101);
 
-                //FALTA: Ent no se pueden reproducir, cada 3 meses aparece uno
                 //FALTA:hijo aparece en un lugar random
 
                 //para calcular la probabilidad que sea de un padre o el otro
@@ -233,12 +247,16 @@ namespace Bitmons1
                         //es de la clase bitmon 1
                         Bitmon hijo = new Bitmon(bitmon1.especie);
                         bitmon1.Hijos += 1;
+                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
                     else
                     {
                         //es de la clase bitmon 2
                         Bitmon hijo = new Bitmon(bitmon2.especie);
                         bitmon2.Hijos += 1;
+                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
                 }
 
@@ -250,25 +268,21 @@ namespace Bitmons1
                         //es de la clase bitmon 2
                         Bitmon hijo = new Bitmon(bitmon2.especie);
                         bitmon2.Hijos += 1;
+                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
                     else
                     {
                         //es de la clase bitmon 1
                         Bitmon hijo = new Bitmon(bitmon1.especie);
                         bitmon1.Hijos += 1;
+                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
                 }
             }
         }
 
-        public void Movimientos()
-        {
-            //ent no se mueven
-            //dorvalo 2 espacios
-            //demas 1 espacio
-            //aletoria
-            //watar solo en agua
-        }
 
         //tiempo de vida menor o igual a cero se va al cielo
         public void Bithalla()
@@ -277,9 +291,24 @@ namespace Bitmons1
             {
                 if (bitmon.TiempoVida <= 0)
                 {
+                    //agrega el bitmon a la lista de bithalla
                     bithalla.Add(bitmon);
+
+                    //elimina el bitmon de la lista de la simulacion
+                    bitmons_s.Remove(bitmon);
+
+                    //elimina el bitmon del array de la simulacion
+                    for (int i = 0; i < bitmons_simulacion.Length; i++)
+                    {
+                        Bitmon bitmon_i = bitmons_simulacion[i, i];
+                        if (bitmon_i == bitmon)
+                        {
+                            bitmons_simulacion.SetValue(" ", i);
+                        }
+                    }
                 }
             }
         }
+
     }
 }

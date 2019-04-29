@@ -125,7 +125,12 @@ namespace Bitmons1
             {
                 multiplicador = 0;
             }
-            return PuntosDeAtaque * multiplicador;
+            return multiplicador;
+        }
+
+        public static implicit operator Bitmon(List<Bitmon> v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
