@@ -24,7 +24,7 @@ namespace Bitmons1
             Mapa mapa = new Mapa();
 
             mapa.GenerarMapa(largo, ancho);
-            bitmons.Spawn(largo, ancho);
+            bitmons.Spawn(mapa);
 
             //for de la simulacion
             //Ent no se pueden reproducir, cada 3 meses aparece uno
@@ -67,14 +67,6 @@ namespace Bitmons1
                 mapa.MostrarMapa();
                 Console.ReadKey();
             }
-
-            Console.WriteLine(mapa.Mterrenos.GetUpperBound(0));
-            Console.WriteLine(mapa.Mterrenos.GetUpperBound(1));
-
-<<<<<<< HEAD
-            Console.ReadKey();
-=======
->>>>>>> f293d40dde6a6fcdacd65712b4f4da58274a2a2c
 
             //tiempo vida promedio de bitmon
             int suma_tvida = 0;

@@ -38,8 +38,11 @@ namespace Bitmons1
 
 
         //configuracion inicial del mapa
-        public void Spawn(int filas, int columnas)
+        public void Spawn(Mapa mapa)
         {
+            int filas = mapa.Mterrenos.GetUpperBound(0);
+            int columnas = mapa.Mterrenos.GetUpperBound(1);
+
             //creacion de arrays para los bitmons y terrenos del usuario
             bitmons_simulacion = new List<Bitmon>[filas, columnas];
 
@@ -92,9 +95,16 @@ namespace Bitmons1
                         int.TryParse(ts, out t);
                     }
 
-                    Bitmon b = new Bitmon(tipos[t - 1]);
-                    bitmons_simulacion[f - 1, c - 1].Add(b);
-                    bitmons_s.Add(b);
+                    if ((mapa.Mterrenos[f - 1, c - 1].tipo != "Agua" && tipos[t - 1] == "Wetar") || bitmons_simulacion[f - 1, c - 1].Count() >= 2)
+                    {
+                        Console.WriteLine("No se puede introducir el bitmon");
+                    }
+                    else
+                    {
+                        Bitmon b = new Bitmon(tipos[t - 1]);
+                        bitmons_simulacion[f - 1, c - 1].Add(b);
+                        bitmons_s.Add(b);
+                    }
                 }
                 else
                 {
