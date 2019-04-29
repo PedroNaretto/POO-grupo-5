@@ -117,7 +117,7 @@ namespace Bitmons1
                                 int m2 = rnd.Next(-1, 2);
                                 try
                                 {
-                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua")
+                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() <2)
                                     {
                                         bitmons_simulacion[i + m1, j + m2].Add(bitmon);
                                         bitmons_simulacion[i, j].Remove(bitmon);
@@ -139,7 +139,7 @@ namespace Bitmons1
                                 int m2 = rnd.Next(-1, 2);
                                 try
                                 {
-                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua")
+                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2)
                                     {
                                         bitmons_simulacion[i + m1, j + m2].Add(bitmon);
                                         bitmons_simulacion[i, j].Remove(bitmon);
@@ -165,9 +165,12 @@ namespace Bitmons1
                                 int m2 = rnd.Next(-1, 2);
                                 try
                                 {
-                                    bitmons_simulacion[i + m1, j + m2].Add(bitmon);
-                                    bitmons_simulacion[i, j].Remove(bitmon);
-                                    m -= 1;
+                                    if (bitmons_simulacion[i + m1, j + m2].Count() < 2)
+                                    {
+                                        bitmons_simulacion[i + m1, j + m2].Add(bitmon);
+                                        bitmons_simulacion[i, j].Remove(bitmon);
+                                        m -= 1;
+                                    }
                                 }
                                 catch
                                 {
