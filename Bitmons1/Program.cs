@@ -67,6 +67,8 @@ namespace Bitmons1
 
             for (int meses = 0; meses < tiempo_simulacion; meses++)
             {
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine($"Simulacion mes {meses}");
                 //Ent no se pueden reproducir, cada 3 meses aparece uno
                 if (meses%3 == 0)
                 {
