@@ -44,6 +44,10 @@ namespace Bitmons1
             mapa.GenerarMapa(filas, columnas);
             bitmons.Spawn(mapa);
 
+            Console.WriteLine("Configuracion inicial del mapa:");
+            controlador.generarMapas(mapa, bitmons);
+            Console.ReadKey();
+
             Console.Write("Periodo de tiempo en meses de la simulacion: ");
             string tiempo_simulacionS = Console.ReadLine();
             int.TryParse(tiempo_simulacionS, out tiempo_simulacion);
@@ -54,13 +58,10 @@ namespace Bitmons1
                 int.TryParse(tiempo_simulacionS, out tiempo_simulacion);
             }
 
-<<<<<<< HEAD
             //for de la simulacion
             //Ent no se pueden reproducir, cada 3 meses aparece uno
             //bitmon permanece un mes en un terreno con el cual tiene debilidad, entonces su tiempo de vida - 2 meses, en otro caso - 1 mes
 
-=======
->>>>>>> 5cf32762ed55d4911c2a1ef19429cc58dfe3256e
             List<Bitmon>[,] bitmons_simulacion = bitmons.GetArray();
             List<Bitmon> bitmons_s = bitmons.GetLista();
 
@@ -113,10 +114,6 @@ namespace Bitmons1
                 }
                 controlador.Entorno(mapa, bitmons);
                 bitmons.Bithalla();
-<<<<<<< HEAD
-=======
-
->>>>>>> 5cf32762ed55d4911c2a1ef19429cc58dfe3256e
                 bitmons.movimientos(mapa);
                 mapa.MostrarMapa();
                 Console.ReadKey();

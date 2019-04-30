@@ -25,7 +25,7 @@ namespace Bitmons1
             {
                 for (int j = 0; j < columnas; j++)
                 {
-                    Console.WriteLine($"Casilla {i}, {j}");
+                    Console.WriteLine($"Casilla {i+1}, {j+1}");
                     int t;
                     List<string> tipos = new List<string> { "Desierto", "Vegetacion","Acuatico", "Nieve", "Volcan" };
                     Console.WriteLine("Escoja tipo el tipo de terreno:");

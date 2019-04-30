@@ -42,8 +42,8 @@ namespace Bitmons1
         //configuracion inicial del mapa
         public void Spawn(Mapa mapa)
         {
-            int filas = mapa.Mterrenos.GetUpperBound(0);
-            int columnas = mapa.Mterrenos.GetUpperBound(1);
+            int filas = mapa.Mterrenos.GetUpperBound(0) +1;
+            int columnas = mapa.Mterrenos.GetUpperBound(1) +1;
 
             //creacion de arrays para los bitmons y terrenos del usuario
             bitmons_simulacion = new List<Bitmon>[filas, columnas];
@@ -78,7 +78,7 @@ namespace Bitmons1
                     Console.Write("Columna: ");
                     string cs = Console.ReadLine();
                     int.TryParse(cs, out c);
-                    while (c.ToString() != cs || c < 1 || c > filas)
+                    while (c.ToString() != cs || c < 1 || c > columnas)
                     {
                         Console.Write("Numero de columna fuera de rango \nColumna: ");
                         cs = Console.ReadLine();
