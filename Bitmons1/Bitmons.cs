@@ -327,12 +327,18 @@ namespace Bitmons1
                     bitmons_s.Remove(bitmon);
 
                     //elimina el bitmon del array de la simulacion
-                    for (int i = 0; i < bitmons_simulacion.Length; i++)
+                    for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
                     {
-                        Bitmon bitmon_i = bitmons_simulacion[i, i];
-                        if (bitmon_i == bitmon)
+                        for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
                         {
-                            bitmons_simulacion.SetValue(" ", i);
+                            if (bitmons_simulacion[i,j].Contains(bitmon))
+                            {
+                                bitmons_simulacion[i, j].Remove(bitmon);
+                            }
+                            else
+                            {
+                                continue;
+                            }
                         }
                     }
                 }

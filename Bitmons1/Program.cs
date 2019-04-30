@@ -12,27 +12,55 @@ namespace Bitmons1
         static void Main(string[] args)
         {
             Random rnd = new Random();
+            int filas;
+            int columnas;
+            int tiempo_simulacion;
             //datos que ingresa el usuario
             Console.WriteLine("Indique la configuracion inicial: ");
             Console.WriteLine("Indique el tamaño del mapa:");
-            Console.Write("Largo: ");
-            int largo = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Ancho: ");
-            int ancho = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Filas: ");
+            string filasS = Console.ReadLine();
+            int.TryParse(filasS, out filas);
+            while (filas.ToString() != filasS)
+            {
+                Console.Write("Numero de filas invalido \nFilas: ");
+                filasS = Console.ReadLine();
+                int.TryParse(filasS, out filas);
+            }
+            Console.Write("Columnas: ");
+            string columnasS = Console.ReadLine();
+            int.TryParse(columnasS, out columnas);
+            while (columnas.ToString() != columnasS)
+            {
+                Console.Write("Numero de columnas invalido \nColumnas: ");
+                columnasS = Console.ReadLine();
+                int.TryParse(columnasS, out columnas);
+            }
 
+            Controlador controlador = new Controlador();
             Bitmons bitmons = new Bitmons();
             Mapa mapa = new Mapa();
 
-            mapa.GenerarMapa(largo, ancho);
+            mapa.GenerarMapa(filas, columnas);
             bitmons.Spawn(mapa);
+
+            Console.Write("Periodo de tiempo en meses de la simulacion: ");
+            string tiempo_simulacionS = Console.ReadLine();
+            int.TryParse(tiempo_simulacionS, out tiempo_simulacion);
+            while (tiempo_simulacion.ToString() != tiempo_simulacionS)
+            {
+                Console.Write("Periodo de tiempo invalido \n Periodo de tiempo en meses de la simulacion: ");
+                tiempo_simulacionS = Console.ReadLine();
+                int.TryParse(tiempo_simulacionS, out tiempo_simulacion);
+            }
 
             //for de la simulacion
             //Ent no se pueden reproducir, cada 3 meses aparece uno
             //bitmon permanece un mes en un terreno con el cual tiene debilidad, entonces su tiempo de vida - 2 meses, en otro caso - 1 mes
-            Console.WriteLine("Periodo de tiempo en meses de la simulacion: ");
-            int tiempo_simulacion = Convert.ToInt32(Console.ReadLine());
+
             List<Bitmon>[,] bitmons_simulacion = bitmons.GetArray();
             List<Bitmon> bitmons_s = bitmons.GetLista();
+
             for (int meses = 0; meses < tiempo_simulacion; meses++)
             {
                 if (meses%3 == 0)
@@ -41,9 +69,9 @@ namespace Bitmons1
                     bool a = true;
                     while (a == true)
                     {
-                        int fila = rnd.Next(0, ancho - 1);
-                        int colun = rnd.Next(0, largo - 1);
-                        if (bitmons_simulacion[colun, fila][1] == null)
+                        int fila = rnd.Next(0, columnas - 1);
+                        int colun = rnd.Next(0, filas - 1);
+                        if (bitmons_simulacion[colun, fila].Count() <= 2)
                         {
                             bitmons_simulacion[colun, fila].Add(bitmon);
                             bitmons_s.Add(bitmon);
@@ -55,14 +83,32 @@ namespace Bitmons1
                         }
                     }
                 }
-                for(int a = 0; largo>a; a++)
+                for(int i = 0; i < filas; i++)
                 {
-                    for (int b = 0; ancho > b; a++)
+                    for (int j = 0; j < columnas; j++)
                     {
-
+                        if (bitmons_simulacion[i,j].Count() == 2)
+                        {
+                            Bitmon b1 = bitmons_simulacion[i, j][0];
+                            Bitmon b2 = bitmons_simulacion[i, j][1];
+                            if (b1.rivalidad.Contains(b2.especie))
+                            {
+                                bitmons.Peleas(b1, b2);
+                            }
+                            else if (b1.afinidad.Contains(b2.especie))
+                            {
+                                bitmons.Relaciones(b1, b2, filas, columnas);
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
                     }
 
                 }
+                controlador.Entorno(mapa, bitmons);
+                bitmons.Bithalla();
                 bitmons.movimientos(mapa);
                 mapa.MostrarMapa();
                 Console.ReadKey();
