@@ -29,8 +29,8 @@ namespace Bitmons1
 
             if (especie == "Taplan")
             {
-                max = 5;
-                min = 350;
+                max = 350;
+                min = 5;
                 rivalidad = new List<string> { "Wetar", "Gofue" };
                 debilidad = new List<string> { "Acuatico", "Nieve", "Volcan" };
                 afinidad = new List<string> { "Vegetacion", "Desierto" };
