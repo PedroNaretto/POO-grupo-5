@@ -54,15 +54,6 @@ namespace Bitmons1
                 int.TryParse(tiempo_simulacionS, out tiempo_simulacion);
             }
 
-            //for de la simulacion
-<<<<<<< HEAD
-            //Ent no se pueden reproducir, cada 3 meses aparece uno
-            //bitmon permanece un mes en un terreno con el cual tiene debilidad, entonces su tiempo de vida - 2 meses, en otro caso - 1 mes
-
-=======
-            Console.WriteLine("Periodo de tiempo en meses de la simulacion: ");
-            int tiempo_simulacion = Convert.ToInt32(Console.ReadLine());
->>>>>>> 174dee45f3455e919b14b5fb18461385e3b03a4a
             List<Bitmon>[,] bitmons_simulacion = bitmons.GetArray();
             List<Bitmon> bitmons_s = bitmons.GetLista();
 
@@ -89,7 +80,6 @@ namespace Bitmons1
                         }
                     }
                 }
-<<<<<<< HEAD
                 for(int i = 0; i < filas; i++)
                 {
                     for (int j = 0; j < columnas; j++)
@@ -116,10 +106,7 @@ namespace Bitmons1
                 }
                 controlador.Entorno(mapa, bitmons);
                 bitmons.Bithalla();
-=======
 
-
->>>>>>> 174dee45f3455e919b14b5fb18461385e3b03a4a
                 bitmons.movimientos(mapa);
                 mapa.MostrarMapa();
                 Console.ReadKey();
