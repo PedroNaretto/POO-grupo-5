@@ -27,15 +27,15 @@ namespace Bitmons1
                 {
                     Console.WriteLine($"Casilla {i}, {j}");
                     int t;
-                    List<string> tipos = new List<string> { "Tierra", "Pasto", "Bosque","Agua", "Hielo", "Lava" };
+                    List<string> tipos = new List<string> { "Desierto", "Vegetacion","Acuatico", "Nieve", "Volcan" };
                     Console.WriteLine("Escoja tipo el tipo de terreno:");
-                    Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
+                    Console.WriteLine("1.-Desierto \n2.-Vegetacion \n3.-Acuatico \n4.-Nieve \n5.-Volcan");
                     string ts = Console.ReadLine();
                     int.TryParse(ts, out t);
                     while (t.ToString() != ts || t < 1 || t > 6)
                     {
                         Console.WriteLine("Escoja tipo el tipo de terreno valido:");
-                        Console.WriteLine("1.-Tierra \n2.-Pasto \n3.-Bosque \n4.-Agua \n5.-Hielo \n6.-Lava");
+                        Console.WriteLine("1.-Desierto \n2.-Vegetacion \n3.-Acuatico \n4.-Nieve \n6.-Volcan");
                         ts = Console.ReadLine();
                         int.TryParse(ts, out t);
                     }
@@ -51,27 +51,27 @@ namespace Bitmons1
             {
                 for (int c = 0; c <= Mterrenos.GetUpperBound(1); c++)
                 {
-                    if (Mterrenos[i, c].tipo == "Tierra")
+                    if (Mterrenos[i, c].tipo == "Desierto")
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Pasto")
+                    else if (Mterrenos[i, c].tipo == "Vegetacion")
                     {
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Agua")
+                    else if (Mterrenos[i, c].tipo == "Acuatico")
                     {
                         Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Hielo")
+                    else if (Mterrenos[i, c].tipo == "Nieve")
                     {
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Lava")
+                    else if (Mterrenos[i, c].tipo == "Desierto")
                     {
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.Write("   ");

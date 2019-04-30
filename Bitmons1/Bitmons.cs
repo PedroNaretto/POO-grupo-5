@@ -22,15 +22,17 @@ namespace Bitmons1
         {
         }
 
-        //para conseguir la lista de bitmons
+        //para conseguir el array de bitmons
         public List<Bitmon>[,] GetArray()
         {
             return bitmons_simulacion;
         }
+        //para conseguir la lista de bitmons en bithalla
         public List<Bitmon> GetBithalla()
         {
             return bithalla;
         }
+        //para conseguir la lista de bitmons
         public List<Bitmon> GetLista()
         {
             return bitmons_s;
@@ -208,8 +210,8 @@ namespace Bitmons1
                 {
                     //daño = puntos de ataque*multiplicador  
                     //cada bitmon descuenta de sus puntos de vida el daño 
-                    bitmon2.PuntosDeVida -= bitmon2.PuntosDeVida * (bitmon1.PuntosDeAtaque * bitmon2.Atacar(bitmon2));
-                    bitmon1.PuntosDeVida -= bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * bitmon1.Atacar(bitmon1));
+                    bitmon2.PuntosDeVida -= bitmon2.PuntosDeVida * (bitmon1.PuntosDeAtaque * bitmon2.Atacar(bitmon1));
+                    bitmon1.PuntosDeVida -= bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * bitmon1.Atacar(bitmon2));
                 }
                 else
                 {

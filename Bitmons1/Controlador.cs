@@ -83,7 +83,7 @@ namespace Bitmons1
                         }
                         else
                         {
-                            continue;
+                            bitmon.TiempoVida -=1;
                         }
                     }
                 }
