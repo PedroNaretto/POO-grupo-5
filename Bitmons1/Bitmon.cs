@@ -29,8 +29,8 @@ namespace Bitmons1
 
             if (especie == "Taplan")
             {
-                max = 5;
-                min = 350;
+                max = 350;
+                min = 5;
                 rivalidad = new List<string> { "Wetar", "Gofue" };
                 debilidad = new List<string> { "Acuatico", "Nieve", "Volcan" };
                 afinidad = new List<string> { "Vegetacion", "Desierto" };
@@ -96,36 +96,82 @@ namespace Bitmons1
         }
 
         //retorna el multiplicador del bitmon
-        public int Atacar(Bitmon bitmon)
+        public double Atacar(Bitmon bitmon1, Bitmon bitmon2)
         {
-            int multiplicador = 0;
+            double multiplicador = 1;
 
             //multiplicador varia por especie
-            if (bitmon.especie == "Taplan")
+            if (bitmon1.especie == "Taplan")
             {
-                multiplicador = 12;
+                if (bitmon2.especie == "Wetar")
+                {
+                    multiplicador = 1.5;
+                }
+                if (bitmon2.especie == "Gofue")
+                {
+                    multiplicador = 1.15;
+                }
             }
-            if (bitmon.especie == "Wetar")
+            if (bitmon1.especie == "Wetar")
             {
-                multiplicador = 8;
+                if (bitmon2.especie == "Taplan")
+                {
+                    multiplicador = 1.1;
+                }
+                if (bitmon2.especie == "Gofue")
+                {
+                    multiplicador = 2;
+                }
+                if (bitmon2.especie == "Dorvalo")
+                {
+                    multiplicador = 0.2;
+                }
             }
-            if (bitmon.especie == "Gofue")
+            if (bitmon1.especie == "Gofue")
             {
-                multiplicador = 10;
+                if (bitmon2.especie == "Taplan")
+                {
+                    multiplicador = 2;
+                }
+                if (bitmon2.especie == "Wetar")
+                {
+                    multiplicador = 0.8;
+                }
             }
-            if (bitmon.especie == "Dorvalo")
+            if (bitmon1.especie == "Dorvalo")
             {
-                multiplicador = 20;
+                if (bitmon2.especie == "Wetar")
+                {
+                    multiplicador = 3;
+                }
+                    if (bitmon2.especie == "Ent")
+                {
+                    multiplicador = 1;
+                }
             }
-            if (bitmon.especie == "Doti")
+            if (bitmon1.especie == "Doti")
             {
-                multiplicador = 6;
+                if (bitmon2.especie == "Ent")
+                {
+                    multiplicador = 2.2;
+                }
             }
-            if (bitmon.especie == "Ent")
+            if (bitmon1.especie == "Ent")
             {
-               multiplicador = 3;
+                if (bitmon1.especie == "Doti")
+                {
+                    multiplicador = 1;
+                }
+                if (bitmon2.especie == "Dorvalo")
+                {
+                    multiplicador = 1.3;
+                }
             }
-            return multiplicador;
+            else
+            {
+                multiplicador = 1;
+            }  
+                return multiplicador ;
         }
 
         public static implicit operator Bitmon(List<Bitmon> v)
