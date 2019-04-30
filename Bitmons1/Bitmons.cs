@@ -119,11 +119,19 @@ namespace Bitmons1
         //movimiento x mes para los bitmons
         public void movimientos(Mapa mapa)
         {
-            for( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+            List<Bitmon>[,] bit_mov = new List<Bitmon>[bitmons_simulacion.GetUpperBound(0)+1, bitmons_simulacion.GetUpperBound(1)+1];
+            for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
                 for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
                 {
-                    foreach(Bitmon bitmon in bitmons_simulacion[i,j])
+                    bit_mov[i, j] = new List<Bitmon> { };
+                }
+            }
+                    for ( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
+                {
+                    foreach (Bitmon bitmon in bitmons_simulacion[i,j])
                     {
                         if (bitmon.especie == "Wetar")
                         {
@@ -136,8 +144,7 @@ namespace Bitmons1
                                 {
                                     if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() <2)
                                     {
-                                        bitmons_simulacion[i + m1, j + m2].Add(bitmon);
-                                        bitmons_simulacion[i, j].Remove(bitmon);
+                                        bit_mov[i + m1, j + m2].Add(bitmon);
                                     }
                                     m -= 1;
                                 }
@@ -158,8 +165,7 @@ namespace Bitmons1
                                 {
                                     if (mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2)
                                     {
-                                        bitmons_simulacion[i + m1, j + m2].Add(bitmon);
-                                        bitmons_simulacion[i, j].Remove(bitmon);
+                                        bit_mov[i + m1, j + m2].Add(bitmon);
                                     }
                                     m -= 1;
                                 }
@@ -178,16 +184,21 @@ namespace Bitmons1
                             int m = 1;
                             while (m > 0)
                             {
+                                Console.Write("alo");
                                 int m1 = rnd.Next(-1, 2);
                                 int m2 = rnd.Next(-1, 2);
+                                Console.WriteLine($"{i + m1}, {j + m2}");
                                 try
                                 {
+                                    Console.Write("chao");
                                     if (bitmons_simulacion[i + m1, j + m2].Count() < 2)
                                     {
-                                        bitmons_simulacion[i + m1, j + m2].Add(bitmon);
-                                        bitmons_simulacion[i, j].Remove(bitmon);
+                                        Console.Write("se resto 1");
+                                        bit_mov[i + m1, j + m2].Add(bitmon);
                                         m -= 1;
+                                        Console.Write("se resto 1");
                                     }
+                                    Console.ReadKey();
                                 }
                                 catch
                                 {
@@ -198,6 +209,7 @@ namespace Bitmons1
                     }
                 }
             }
+            bitmons_simulacion = bit_mov;
         }
 
         //relacion de pelea entre bitmons
