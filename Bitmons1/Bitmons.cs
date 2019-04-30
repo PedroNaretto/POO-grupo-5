@@ -142,7 +142,7 @@ namespace Bitmons1
                                 int m2 = rnd.Next(-1, 2);
                                 try
                                 {
-                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() <2)
+                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
                                     {
                                         bit_mov[i + m1, j + m2].Add(bitmon);
                                     }
@@ -163,7 +163,7 @@ namespace Bitmons1
                                 int m2 = rnd.Next(-1, 2);
                                 try
                                 {
-                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2)
+                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() != "Acuatico" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
                                     {
                                         bit_mov[i + m1, j + m2].Add(bitmon);
                                     }
@@ -184,19 +184,14 @@ namespace Bitmons1
                             int m = 1;
                             while (m > 0)
                             {
-                                Console.Write("alo");
                                 int m1 = rnd.Next(-1, 2);
                                 int m2 = rnd.Next(-1, 2);
-                                Console.WriteLine($"{i + m1}, {j + m2}");
                                 try
                                 {
-                                    Console.Write("chao");
-                                    if (bitmons_simulacion[i + m1, j + m2].Count() < 2)
+                                    if (bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
                                     {
-                                        Console.Write("se resto 1");
                                         bit_mov[i + m1, j + m2].Add(bitmon);
                                         m -= 1;
-                                        Console.Write("se resto 1");
                                     }
                                     Console.ReadKey();
                                 }

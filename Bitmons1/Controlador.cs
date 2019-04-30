@@ -30,34 +30,29 @@ namespace Bitmons1
                         celda += " ";
                     }
                     celda = celda.Insert( 3, ",");
-                    if (cMapa.Mterrenos[i, j].tipo == "Tierra")
+                    if (cMapa.Mterrenos[i, j].tipo == "Desierto")
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow;
                         Console.Write(celda);
                     }
-                    else if (cMapa.Mterrenos[i, j].tipo == "Pasto")
+                    else if (cMapa.Mterrenos[i, j].tipo == "Vegetacion")
                     {
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.Write(celda);
                     }
-                    else if (cMapa.Mterrenos[i, j].tipo == "Agua")
+                    else if (cMapa.Mterrenos[i, j].tipo == "Acuatico")
                     {
                         Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write(celda);
                     }
-                    else if (cMapa.Mterrenos[i, j].tipo == "Hielo")
+                    else if (cMapa.Mterrenos[i, j].tipo == "Nieve")
                     {
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.Write(celda);
                     }
-                    else if (cMapa.Mterrenos[i, j].tipo == "Lava")
+                    else if (cMapa.Mterrenos[i, j].tipo == "Volcan")
                     {
                         Console.BackgroundColor = ConsoleColor.Red;
-                        Console.Write(celda);
-                    }
-                    else
-                    {
-                        Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.Write(celda);
                     }
                 }

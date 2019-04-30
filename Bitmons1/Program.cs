@@ -115,14 +115,15 @@ namespace Bitmons1
                 controlador.Entorno(mapa, bitmons);
                 bitmons.Bithalla();
                 bitmons.movimientos(mapa);
-                mapa.MostrarMapa();
+                controlador.generarMapas(mapa, bitmons);
                 Console.ReadKey();
             }
 
             //tiempo vida promedio de bitmon
             int suma_tvida = 0;
             int total = bitmons_simulacion.Length;
-            foreach (Bitmon bitmon in bitmons_simulacion)
+            
+            foreach (Bitmon bitmon in bitmons_s)
             {
                 suma_tvida += bitmon.TiempoVida;
             }
@@ -133,7 +134,7 @@ namespace Bitmons1
             //tiempo de vida promedio de cada especie de bitmon
             int suma_tvida_taplan = 0, suma_tvida_wetar = 0, suma_tvida_gofue = 0, suma_tvida_dorvalo = 0, suma_tvida_doti = 0, suma_tvida_ent = 0;
             int total_taplan = 0, total_wetar = 0, total_gofue = 0, total_dorvalo = 0, total_doti = 0, total_ent = 0;
-            foreach (Bitmon bitmon in bitmons_simulacion)
+            foreach (Bitmon bitmon in bitmons_s)
             {
                 if (bitmon.especie == "Taplan")
                 {
@@ -180,7 +181,7 @@ namespace Bitmons1
 
             //tasa natalidad cada especie
             int hijos_taplan = 0, hijos_wetar = 0, hijos_gofue = 0, hijos_dorvalo = 0, hijos_doti = 0, hijos_ent = 0;
-            foreach (Bitmon bitmon in bitmons_simulacion)
+            foreach (Bitmon bitmon in bitmons_s)
             {
                 if (bitmon.especie == "Taplan")
                 {

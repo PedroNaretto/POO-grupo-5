@@ -174,9 +174,5 @@ namespace Bitmons1
                 return multiplicador ;
         }
 
-        public static implicit operator Bitmon(List<Bitmon> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
