@@ -96,7 +96,7 @@ namespace Bitmons1
         }
 
         //retorna el multiplicador del bitmon
-        public int Atacar(Bitmon bitmon)
+        public float Atacar(Bitmon bitmon1, Bitmon bitmon2)
         {
             int multiplicador = 0;
 
