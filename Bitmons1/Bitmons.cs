@@ -228,7 +228,7 @@ namespace Bitmons1
             if (bitmon2.PuntosDeVida <= 0)
             {
                 bithalla.Add(bitmon2);
-                bitmon1.PuntosDeVida += bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * Convert.ToInt32(bitmon1.Atacar(bitmon1)));
+                bitmon1.PuntosDeVida += bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * Convert.ToInt32(bitmon1.Atacar(bitmon1, bitmon2)));
             }
 
             //pueden ambos irse a bithalla despues
