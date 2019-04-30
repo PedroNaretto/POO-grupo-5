@@ -51,27 +51,27 @@ namespace Bitmons1
             {
                 for (int c = 0; c <= Mterrenos.GetUpperBound(1); c++)
                 {
-                    if (Mterrenos[i, c].tipo == "Tierra")
+                    if (Mterrenos[i, c].tipo == "Desierto")
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Pasto")
+                    else if (Mterrenos[i, c].tipo == "Vegetacion")
                     {
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Agua")
+                    else if (Mterrenos[i, c].tipo == "Acuatico")
                     {
                         Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Hielo")
+                    else if (Mterrenos[i, c].tipo == "Nieve")
                     {
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.Write("   ");
                     }
-                    else if (Mterrenos[i, c].tipo == "Lava")
+                    else if (Mterrenos[i, c].tipo == "Desierto")
                     {
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.Write("   ");
