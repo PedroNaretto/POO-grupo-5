@@ -12,11 +12,16 @@ namespace BitmonsForms
 {
     public partial class GeneradorMapa : Form
     {
+        //numero de filas y columnas del mapa
         int filas;
         int columnas;
+
+        //celda (boton) seleccionado que se esta configurando
         Button celdaSeleccionada;
+        //Indices del boton seleccionado dentro del TableLayoutPanel
         TableLayoutPanelCellPosition posicion;
 
+        //Objeto Bitmons y Mapa creados donde se guarda la info del mapa
         Bitmons bitmons = new Bitmons();
         Mapa mapa = new Mapa();
 
@@ -26,9 +31,11 @@ namespace BitmonsForms
             this.filas = filas;
             this.columnas = columnas;
 
+            //Se crean las arreglos de los mapas para los bitmons y los terrenos
             bitmons.bitmons_simulacion = new List<Bitmon>[filas, columnas];
             mapa.Mterrenos = new Terreno[filas, columnas];
 
+            //Se crea una lista de bitmons para cada celda de la matriz de bitmons 
             for(int i = 0; i < filas; i++)
             {
                 for (int j = 0; j < columnas; j++)
@@ -40,9 +47,11 @@ namespace BitmonsForms
 
         private void GeneradorMapa_Load(object sender, EventArgs e)
         {
+            //TableLayoutPanel tablaMapa le agregamos todas las lineas y columnas necesarias para poner los botones
             tablaMapa.RowCount = filas;
             tablaMapa.ColumnCount = columnas;
 
+            //Creamos los botones para cada celda del TableLayoutPanel
             for (int i = 0; i < filas; i++)
             {
                 for (int j = 0; j < columnas; j++)
@@ -59,6 +68,7 @@ namespace BitmonsForms
                 }
             }
 
+            //Controlamos el estilo y tamaño de cada boton
             TableLayoutColumnStyleCollection estiloColumna = tablaMapa.ColumnStyles;
             TableLayoutRowStyleCollection estiloFila = tablaMapa.RowStyles;
 
@@ -83,6 +93,7 @@ namespace BitmonsForms
                 style.Height = tablaMapa.Height / filas;
             }
 
+            //Controlamos el tamaño de los TableLayoutPanels y del form
             tablaMapa.Width = 50 * columnas;
             tablaMapa.Height = 50 * filas;
             tablaForm.AutoSize = true;
@@ -98,16 +109,19 @@ namespace BitmonsForms
             //tablaForm.AutoSize = true;
             //this.AutoSize = true;
 
+            //A cada boton le agregamos el evento Button_click
             foreach (Button button in tablaMapa.Controls)
             {
                 button.Click += button_Click;
             }
+
             // Lista de items en terreno combobox
             List<string> tipoTerrenos = new List<string> { "Desierto", "Vegetacion", "Acuatico", "Nieve", "Volcan" };
             foreach (string terreno in tipoTerrenos)
             {
                 comboBoxTipoTerreno.Items.Add(terreno);
             }
+
             // Lista de items en bitmons combobox
             List<string> tipoBitmons = new List<string> { "Taplan", "Wetar", "Gofue", "Dorvalo", "Doti", "Ent" };
             foreach (string bitmon in tipoBitmons)
@@ -119,35 +133,44 @@ namespace BitmonsForms
 
         private void button_Click(object sender, EventArgs e)
         {
+            //Configuramos la info para que parta todo en blanco
             comboBoxTipoBitmon.Text = "";
             comboBoxTipoTerreno.Text = "";
             comboBoxTipoBitmon.Enabled = false;
             BotonAgregarBitmon.Enabled = false;
+
             // "sender" es el que originó el evento...
             // Como sabemos que button_Click se llama cuando hacemos click en un cierto botón,
             // "sender" corresponderá al botón que estamos haciéndole click. Pero siempre vendrá 
             // en una variable "object"... así que tenemos que "transformalo" a Button:
             Button button = (Button)sender;
 
+            //guardamos la posicion del boton para poder trabajar la info despues
             posicion = tablaMapa.GetPositionFromControl(button);
             celdaSeleccionada = button;
 
+            //Activamos el comboBoxTipoTerreno para que no se pueda escojer terreno antes de tener escojido una celda
             comboBoxTipoTerreno.Enabled = true;
         }
 
         private void comboBoxTipoTerreno_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Activamos el comboBoxTipoBitmon para que no se puedan agregar bitmons antes de tener escojido el terreno
             comboBoxTipoBitmon.Enabled = true;
+
+            //Guardamos el tipo de terreno y cambiamos el color del terreno
             celdaSeleccionada.Tag = comboBoxTipoTerreno.Text;
             celdaSeleccionada.BackColor = mapa.MostrarMapa(celdaSeleccionada.Tag.ToString());
 
             string tipoSeleccionado = comboBoxTipoTerreno.Text;
+            //Creamos el objeto terreno
             mapa.Mterrenos[posicion.Row, posicion.Column] = new Terreno(tipoSeleccionado);
 
         }
 
         private void comboBoxTipoBitmon_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Activamos el BotonAgregarBitmon para que no se pueda agregar un bitmon antes de tiempo
             BotonAgregarBitmon.Enabled = true;
         }
 
@@ -175,6 +198,7 @@ namespace BitmonsForms
         {
             bool IniciarSimulacion = true;
 
+            //revisamos que cada celda tenga ya escojido un terreno
             foreach( Button boton in tablaMapa.Controls)
             {
                 if (boton.Tag == null)
@@ -185,7 +209,7 @@ namespace BitmonsForms
             
             if (IniciarSimulacion)
             {
-
+                //Aqui va el form de la simulacion
             }
             else
             {
