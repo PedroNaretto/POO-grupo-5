@@ -55,7 +55,7 @@
             this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tablaForm.Controls.Add(this.tablaMapa, 2, 1);
             this.tablaForm.Controls.Add(this.flowLayoutPanel1, 2, 3);
             this.tablaForm.Controls.Add(this.tableLayoutPanel1, 1, 1);
@@ -110,6 +110,7 @@
             this.botonInicioSimulacion.TabIndex = 0;
             this.botonInicioSimulacion.Text = "Iniciar Simulación";
             this.botonInicioSimulacion.UseVisualStyleBackColor = true;
+            this.botonInicioSimulacion.Click += new System.EventHandler(this.botonInicioSimulacion_Click);
             // 
             // BotonAtras
             // 
@@ -119,6 +120,7 @@
             this.BotonAtras.TabIndex = 1;
             this.BotonAtras.Text = "Atras";
             this.BotonAtras.UseVisualStyleBackColor = true;
+            this.BotonAtras.Click += new System.EventHandler(this.BotonAtras_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -200,10 +202,11 @@
             // 
             // BotonAgregarBitmon
             // 
+            this.BotonAgregarBitmon.Dock = System.Windows.Forms.DockStyle.Top;
             this.BotonAgregarBitmon.Enabled = false;
             this.BotonAgregarBitmon.Location = new System.Drawing.Point(3, 106);
             this.BotonAgregarBitmon.Name = "BotonAgregarBitmon";
-            this.BotonAgregarBitmon.Size = new System.Drawing.Size(105, 39);
+            this.BotonAgregarBitmon.Size = new System.Drawing.Size(138, 39);
             this.BotonAgregarBitmon.TabIndex = 4;
             this.BotonAgregarBitmon.Text = "Agregar";
             this.BotonAgregarBitmon.UseVisualStyleBackColor = true;
@@ -218,6 +221,7 @@
             this.botonLimpiar.TabIndex = 4;
             this.botonLimpiar.Text = "Limpiar celda";
             this.botonLimpiar.UseVisualStyleBackColor = true;
+            this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
             // 
             // label3
             // 

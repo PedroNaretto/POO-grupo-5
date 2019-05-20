@@ -170,5 +170,48 @@ namespace BitmonsForms
                 }
             }
         }
+
+        private void botonInicioSimulacion_Click(object sender, EventArgs e)
+        {
+            bool IniciarSimulacion = true;
+
+            foreach( Button boton in tablaMapa.Controls)
+            {
+                if (boton.Tag == null)
+                {
+                    IniciarSimulacion = false;
+                }
+            }
+            
+            if (IniciarSimulacion)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Debe definir cada terreno antes de partir la simulacion");
+            }
+
+        }
+
+        private void botonLimpiar_Click(object sender, EventArgs e)
+        {
+            celdaSeleccionada.Tag = null;
+            celdaSeleccionada.BackColor = SystemColors.Control;
+            celdaSeleccionada.Text = "";
+
+            mapa.Mterrenos[posicion.Row, posicion.Column] = null;
+            bitmons.bitmons_simulacion[posicion.Row, posicion.Column].Clear();
+
+            comboBoxTipoBitmon.Text = "";
+            comboBoxTipoTerreno.Text = "";
+            BotonAgregarBitmon.Enabled = false;
+            comboBoxTipoBitmon.Enabled = false;
+        }
+
+        private void BotonAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
