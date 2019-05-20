@@ -26,7 +26,7 @@ namespace BitmonsForms
         {
             if (numericUpDown1.Value == 0)
             {
-                MessageBox.Show("Escoja numero de meses mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Escoja numero de meses mayor a 0");
             }
             else
             {
