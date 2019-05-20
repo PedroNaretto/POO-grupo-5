@@ -1,0 +1,11 @@
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\bin\Debug\BitmonsForms.exe.config
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\bin\Debug\BitmonsForms.exe
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\bin\Debug\BitmonsForms.pdb
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.csprojResolveAssemblyReference.cache
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.Properties.Resources.resources
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.csproj.GenerateResource.cache
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.csproj.CoreCompileInputs.cache
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.exe
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.pdb
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.Inicio.resources
+C:\Users\Pedro\Desktop\BitmonsForms\BitmonsForms\obj\Debug\BitmonsForms.GeneradorMapa.resources

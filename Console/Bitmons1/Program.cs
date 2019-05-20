@@ -76,9 +76,9 @@ namespace Bitmons1
                     bool a = true;
                     while (a == true)
                     {
-                        int fila = rnd.Next(0, columnas - 1);
-                        int colun = rnd.Next(0, filas - 1);
-                        if (bitmons_simulacion[colun, fila].Count() <= 2)
+                        int fila = rnd.Next(0, columnas);
+                        int colun = rnd.Next(0, filas);
+                        if (bitmons_simulacion[colun, fila].Count() < 2)
                         {
                             bitmons_simulacion[colun, fila].Add(bitmon);
                             bitmons_s.Add(bitmon);
