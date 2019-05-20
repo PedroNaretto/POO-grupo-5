@@ -15,6 +15,7 @@ namespace BitmonsForms
         //numero de filas y columnas del mapa
         int filas;
         int columnas;
+        int meses;
 
         //celda (boton) seleccionado que se esta configurando
         Button celdaSeleccionada;
@@ -210,6 +211,16 @@ namespace BitmonsForms
             if (IniciarSimulacion)
             {
                 //Aqui va el form de la simulacion
+                Meses Fmeses = new Meses();
+                Fmeses.E_PasarMeses += new Meses.PasarMeses(resivirMeses);
+                Fmeses.ShowDialog();
+
+                if (meses != 0)
+                {
+                    //
+                    //Aqui va el form de la simulacion
+                    //
+                }
             }
             else
             {
@@ -236,6 +247,11 @@ namespace BitmonsForms
         private void BotonAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void resivirMeses(int NumeroMeses)
+        {
+            meses = NumeroMeses;
         }
     }
 }

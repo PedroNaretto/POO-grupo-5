@@ -41,7 +41,6 @@
             this.comboBoxTipoBitmon = new System.Windows.Forms.ComboBox();
             this.BotonAgregarBitmon = new System.Windows.Forms.Button();
             this.botonLimpiar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.tablaForm.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,7 +60,6 @@
             this.tablaForm.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tablaForm.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tablaForm.Controls.Add(this.botonLimpiar, 1, 3);
-            this.tablaForm.Controls.Add(this.label3, 2, 0);
             this.tablaForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaForm.Location = new System.Drawing.Point(0, 0);
             this.tablaForm.Name = "tablaForm";
@@ -223,15 +221,6 @@
             this.botonLimpiar.UseVisualStyleBackColor = true;
             this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
-            // 
             // GeneradorMapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +258,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxTipoBitmon;
         private System.Windows.Forms.Button botonLimpiar;
-        private System.Windows.Forms.Label label3;
     }
 }
