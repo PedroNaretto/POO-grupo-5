@@ -68,6 +68,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simulacion.Designer.cs">
+      <DependentUpon>Simulacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Terreno.cs" />
     <EmbeddedResource Include="GeneradorMapa.resx">
       <DependentUpon>GeneradorMapa.cs</DependentUpon>
@@ -87,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Simulacion.resx">
+      <DependentUpon>Simulacion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

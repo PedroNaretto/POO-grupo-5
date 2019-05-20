@@ -219,9 +219,10 @@ namespace BitmonsForms
                 //Condicion para partir la simulacion
                 if (meses != 0)
                 {
-                    //
-                    //Aqui va el form de la simulacion
-                    //
+                    Simulacion simulacion = new Simulacion();
+                    this.Hide();
+                    simulacion.ShowDialog();
+                    this.Close();
                 }
             }
             else
