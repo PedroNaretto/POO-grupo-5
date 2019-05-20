@@ -12,8 +12,11 @@ namespace BitmonsForms
 {
     public partial class Meses : Form
     {
+        //Delegate 
         public delegate void PasarMeses(int meses);
+        //Evento
         public event PasarMeses E_PasarMeses;
+
         public Meses()
         {
             InitializeComponent();

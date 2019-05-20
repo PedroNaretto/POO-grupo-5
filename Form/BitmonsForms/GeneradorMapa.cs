@@ -210,11 +210,13 @@ namespace BitmonsForms
             
             if (IniciarSimulacion)
             {
-                //Aqui va el form de la simulacion
+                //Form meses para resivir el numero de meses que durara la simulacion 
+                //Manera en que la info llegua del Form meses al form GeneradorMapa, para pasar toda la info al siguiente form
                 Meses Fmeses = new Meses();
                 Fmeses.E_PasarMeses += new Meses.PasarMeses(resivirMeses);
                 Fmeses.ShowDialog();
 
+                //Condicion para partir la simulacion
                 if (meses != 0)
                 {
                     //
