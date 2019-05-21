@@ -62,10 +62,10 @@ namespace Bitmons1
             //Ent no se pueden reproducir, cada 3 meses aparece uno
             //bitmon permanece un mes en un terreno con el cual tiene debilidad, entonces su tiempo de vida - 2 meses, en otro caso - 1 mes
 
-            List<Bitmon>[,] bitmons_simulacion = bitmons.GetArray();
-            List<Bitmon> bitmons_s = bitmons.GetLista();
+            List<Bitmon>[,] bitmons_simulacion = bitmons.bitmons_simulacion;
+            List<Bitmon> bitmons_s = bitmons.bitmons_s;
 
-            for (int meses = 0; meses < tiempo_simulacion; meses++)
+            for (int meses = 1; meses < tiempo_simulacion; meses++)
             {
                 Console.WriteLine("-----------------------------");
                 Console.WriteLine($"Simulacion mes {meses}");
@@ -122,20 +122,20 @@ namespace Bitmons1
             }
 
             //tiempo vida promedio de bitmon
-            int suma_tvida = 0;
-            int total = bitmons_simulacion.Length;
+            double suma_tvida = 0;
+            double total = Convert.ToDouble(bitmons_simulacion.Length);
             
             foreach (Bitmon bitmon in bitmons_s)
             {
                 suma_tvida += bitmon.TiempoVida;
             }
-            int TiempoVidaPromedio_Bit = suma_tvida / total;
+            double TiempoVidaPromedio_Bit = suma_tvida / total;
             Console.WriteLine("Tiempo de vida promedio de los Bitmons: " + Convert.ToString(TiempoVidaPromedio_Bit));
 
 
             //tiempo de vida promedio de cada especie de bitmon
-            int suma_tvida_taplan = 0, suma_tvida_wetar = 0, suma_tvida_gofue = 0, suma_tvida_dorvalo = 0, suma_tvida_doti = 0, suma_tvida_ent = 0;
-            int total_taplan = 0, total_wetar = 0, total_gofue = 0, total_dorvalo = 0, total_doti = 0, total_ent = 0;
+            float suma_tvida_taplan = 0, suma_tvida_wetar = 0, suma_tvida_gofue = 0, suma_tvida_dorvalo = 0, suma_tvida_doti = 0, suma_tvida_ent = 0;
+            float total_taplan = 0, total_wetar = 0, total_gofue = 0, total_dorvalo = 0, total_doti = 0, total_ent = 0;
             foreach (Bitmon bitmon in bitmons_s)
             {
                 if (bitmon.especie == "Taplan")
@@ -182,32 +182,50 @@ namespace Bitmons1
 
 
             //tasa natalidad cada especie
-            int hijos_taplan = 0, hijos_wetar = 0, hijos_gofue = 0, hijos_dorvalo = 0, hijos_doti = 0, hijos_ent = 0;
+            double hijos_taplan = 0, hijos_wetar = 0, hijos_gofue = 0, hijos_dorvalo = 0, hijos_doti = 0, hijos_ent = 0;
             foreach (Bitmon bitmon in bitmons_s)
             {
                 if (bitmon.especie == "Taplan")
                 {
-                    hijos_taplan += 1;
+                    if (bitmon.Hijos != 0)
+                    {
+                        hijos_taplan += Convert.ToDouble(bitmon.Hijos);
+                    }
                 }
                 if (bitmon.especie == "Wetar")
                 {
-                    hijos_wetar += 1;
+                    if (bitmon.Hijos != 0)
+                    {
+                        hijos_wetar += Convert.ToDouble(bitmon.Hijos);
+                    }
                 }
                 if (bitmon.especie == "Gofue")
                 {
-                    hijos_gofue += 1;
+                    if (bitmon.Hijos != 0)
+                    {
+                        hijos_gofue += Convert.ToDouble(bitmon.Hijos);
+                    }
                 }
                 if (bitmon.especie == "Dorvalo")
                 {
-                    hijos_dorvalo += 1;
+                    if (bitmon.Hijos != 0)
+                    {
+                        hijos_dorvalo += Convert.ToDouble(bitmon.Hijos);
+                    }
                 }
                 if (bitmon.especie == "Doti")
                 {
-                    hijos_doti += 1;
+                    if (bitmon.Hijos != 0)
+                    {
+                        hijos_doti += Convert.ToDouble(bitmon.Hijos);
+                    }
                 }
                 if (bitmon.especie == "Ent")
                 {
-                    hijos_ent += 1;
+                    if (bitmon.Hijos != 0)
+                    {
+                        hijos_ent += Convert.ToDouble(bitmon.Hijos);
+                    }
                 }
                 else
                 {
@@ -223,9 +241,9 @@ namespace Bitmons1
 
 
             //tasa mortalidad cada especie
-            List<Bitmon> bithalla = bitmons.GetBithalla();
-            int muertos_taplan = 0, muertos_wetar = 0, muertos_gofue = 0, muertos_dorvalo = 0, muertos_doti = 0, muertos_ent = 0;
-            int total_bithalla = bithalla.Count();
+            List<Bitmon> bithalla = bitmons.bithalla;
+            double muertos_taplan = 0, muertos_wetar = 0, muertos_gofue = 0, muertos_dorvalo = 0, muertos_doti = 0, muertos_ent = 0;
+            double total_bithalla = Convert.ToDouble(bithalla.Count());
             foreach (Bitmon bitmon in bithalla)
             {
                 if (bitmon.especie == "Taplan")
@@ -298,15 +316,19 @@ namespace Bitmons1
             {
                 extintas.Add("Ent");
             }
-            Console.WriteLine("El listado de las especies extintas: " + extintas);
+            Console.WriteLine("Las especies extintas: " );
+            foreach(string especie in extintas)
+            {
+                Console.WriteLine(especie);
+            }
 
             //descripcion poblacion de Bitmons en bithalla (cantidad de cada especie, %)
-            Console.WriteLine("Descripcion Taplan en bithalla: " + "cantidad: " + Convert.ToString(muertos_taplan) + Convert.ToString((muertos_taplan*100 /total_bithalla)));
-            Console.WriteLine("Descripcion Wetar en bithalla: " + "cantidad: " + Convert.ToString(muertos_wetar) + Convert.ToString((muertos_wetar * 100 /total_bithalla)));
-            Console.WriteLine("Descripcion Gofue en bithalla: " + "cantidad: " + Convert.ToString(muertos_gofue) + Convert.ToString((muertos_gofue * 100 / total_bithalla)));
-            Console.WriteLine("Descripcion Dorvalo en bithalla: " + "cantidad: " + Convert.ToString(muertos_dorvalo) + Convert.ToString((muertos_dorvalo * 100 /total_bithalla)));
-            Console.WriteLine("Descripcion Doti en bithalla: " + "cantidad: " + Convert.ToString(muertos_doti) + Convert.ToString((muertos_doti * 100 / total_bithalla)));
-            Console.WriteLine("Descripcion Ent en bithalla: " + "cantidad: " + Convert.ToString(muertos_ent) + Convert.ToString((muertos_ent * 100 / total_bithalla)));
+            Console.WriteLine("Descripcion Taplan en bithalla: " + "cantidad: " + Convert.ToString(muertos_taplan) + Convert.ToString((muertos_taplan/total_bithalla)*100));
+            Console.WriteLine("Descripcion Wetar en bithalla: " + "cantidad: " + Convert.ToString(muertos_wetar) + Convert.ToString((muertos_wetar /total_bithalla)*100));
+            Console.WriteLine("Descripcion Gofue en bithalla: " + "cantidad: " + Convert.ToString(muertos_gofue) + Convert.ToString((muertos_gofue / total_bithalla)*100));
+            Console.WriteLine("Descripcion Dorvalo en bithalla: " + "cantidad: " + Convert.ToString(muertos_dorvalo) + Convert.ToString((muertos_dorvalo/total_bithalla)*100));
+            Console.WriteLine("Descripcion Doti en bithalla: " + "cantidad: " + Convert.ToString(muertos_doti) + Convert.ToString((muertos_doti/ total_bithalla)*100));
+            Console.WriteLine("Descripcion Ent en bithalla: " + "cantidad: " + Convert.ToString(muertos_ent) + Convert.ToString((muertos_ent / total_bithalla)*100));
 
         }
     }

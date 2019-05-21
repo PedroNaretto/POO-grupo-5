@@ -145,17 +145,16 @@ namespace BitmonsForms
 
             //Configuramos la info para que parta todo en blanco
             comboBoxTipoBitmon.Text = "";
+            BotonAgregarBitmon.Enabled = false;
             if (button.Tag != null)
             {
                 comboBoxTipoTerreno.Text = button.Tag.ToString();
                 comboBoxTipoBitmon.Enabled = true;
-                BotonAgregarBitmon.Enabled = true;
             }
             else
             {
                 comboBoxTipoTerreno.Text = "";
                 comboBoxTipoBitmon.Enabled = false;
-                BotonAgregarBitmon.Enabled = false;
             }
 
             //guardamos la posicion del boton para poder trabajar la info despues
