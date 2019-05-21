@@ -42,6 +42,7 @@ namespace BitmonsForms
                 for (int j = 0; j < columnas; j++)
                 {
                     bitmons.bitmons_simulacion[i, j] = new List<Bitmon> { };
+                    mapa.Mterrenos[i, j] = new Terreno(null); 
                 }
             }
         }
@@ -69,6 +70,10 @@ namespace BitmonsForms
                 }
             }
 
+
+
+
+
             //Controlamos el estilo y tamaño de cada boton
             TableLayoutColumnStyleCollection estiloColumna = tablaMapa.ColumnStyles;
             TableLayoutRowStyleCollection estiloFila = tablaMapa.RowStyles;
@@ -76,39 +81,37 @@ namespace BitmonsForms
             int ancho = tablaMapa.Width;
             int alto = tablaMapa.Height;
 
-            foreach (Button boton in tablaMapa.Controls)
-            {
-                boton.Width = ancho / columnas;
-                boton.Height = alto / filas;
-            }
-
             foreach (ColumnStyle style in estiloColumna)
             {
                 style.SizeType = SizeType.AutoSize;
-                style.Width = tablaMapa.Width / columnas;
             }
 
             foreach (RowStyle style in estiloFila)
             {
                 style.SizeType = SizeType.AutoSize;
-                style.Height = tablaMapa.Height / filas;
             }
-
-            //Controlamos el tamaño de los TableLayoutPanels y del form
-            tablaMapa.Width = 50 * columnas;
-            tablaMapa.Height = 50 * filas;
-            tablaForm.AutoSize = true;
-            this.AutoSize = true;
 
             foreach (Button boton in tablaMapa.Controls)
             {
-                boton.Width = 50;
                 boton.Height = 50;
+                boton.Width = 50;
             }
+
+
+
+            //Controlamos el tamaño de los TableLayoutPanels y del form
+            //tablaMapa.Width = 500;
+            //tablaMapa.Height = 500;
+            //tablaForm.AutoSize = true;
+            //this.AutoSize = true;
 
             //tablaMapa.AutoSize = true;
             //tablaForm.AutoSize = true;
             //this.AutoSize = true;
+
+
+
+
 
             //A cada boton le agregamos el evento Button_click
             foreach (Button button in tablaMapa.Controls)
@@ -134,17 +137,26 @@ namespace BitmonsForms
 
         private void button_Click(object sender, EventArgs e)
         {
-            //Configuramos la info para que parta todo en blanco
-            comboBoxTipoBitmon.Text = "";
-            comboBoxTipoTerreno.Text = "";
-            comboBoxTipoBitmon.Enabled = false;
-            BotonAgregarBitmon.Enabled = false;
-
             // "sender" es el que originó el evento...
             // Como sabemos que button_Click se llama cuando hacemos click en un cierto botón,
             // "sender" corresponderá al botón que estamos haciéndole click. Pero siempre vendrá 
             // en una variable "object"... así que tenemos que "transformalo" a Button:
             Button button = (Button)sender;
+
+            //Configuramos la info para que parta todo en blanco
+            comboBoxTipoBitmon.Text = "";
+            if (button.Tag != null)
+            {
+                comboBoxTipoTerreno.Text = button.Tag.ToString();
+                comboBoxTipoBitmon.Enabled = true;
+                BotonAgregarBitmon.Enabled = true;
+            }
+            else
+            {
+                comboBoxTipoTerreno.Text = "";
+                comboBoxTipoBitmon.Enabled = false;
+                BotonAgregarBitmon.Enabled = false;
+            }
 
             //guardamos la posicion del boton para poder trabajar la info despues
             posicion = tablaMapa.GetPositionFromControl(button);
@@ -165,7 +177,7 @@ namespace BitmonsForms
 
             string tipoSeleccionado = comboBoxTipoTerreno.Text;
             //Creamos el objeto terreno
-            mapa.Mterrenos[posicion.Row, posicion.Column] = new Terreno(tipoSeleccionado);
+            mapa.Mterrenos[posicion.Row, posicion.Column].tipo = comboBoxTipoTerreno.Text;
 
         }
 

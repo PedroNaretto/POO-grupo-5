@@ -91,16 +91,46 @@
             // 
             this.NumeroFilas.Dock = System.Windows.Forms.DockStyle.Left;
             this.NumeroFilas.Location = new System.Drawing.Point(403, 171);
+            this.NumeroFilas.Maximum = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+            this.NumeroFilas.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumeroFilas.Name = "NumeroFilas";
             this.NumeroFilas.Size = new System.Drawing.Size(120, 20);
             this.NumeroFilas.TabIndex = 4;
+            this.NumeroFilas.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // NumeroColumnas
             // 
             this.NumeroColumnas.Location = new System.Drawing.Point(403, 198);
+            this.NumeroColumnas.Maximum = new decimal(new int[] {
+            18,
+            0,
+            0,
+            0});
+            this.NumeroColumnas.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumeroColumnas.Name = "NumeroColumnas";
             this.NumeroColumnas.Size = new System.Drawing.Size(120, 20);
             this.NumeroColumnas.TabIndex = 5;
+            this.NumeroColumnas.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // botonInicioSimulacion
             // 

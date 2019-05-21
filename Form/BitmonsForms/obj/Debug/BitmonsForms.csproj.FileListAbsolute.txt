@@ -21,3 +21,4 @@ C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto
 C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.exe
 C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.pdb
 C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Meses.resources
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Simulacion.resources

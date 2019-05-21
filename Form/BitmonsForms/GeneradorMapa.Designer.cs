@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tablaForm = new System.Windows.Forms.TableLayoutPanel();
             this.tablaMapa = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -41,10 +42,12 @@
             this.comboBoxTipoBitmon = new System.Windows.Forms.ComboBox();
             this.BotonAgregarBitmon = new System.Windows.Forms.Button();
             this.botonLimpiar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tablaForm.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tablaForm
@@ -73,20 +76,20 @@
             // 
             // tablaMapa
             // 
+            this.tablaMapa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tablaMapa.AutoSize = true;
             this.tablaMapa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tablaMapa.ColumnCount = 2;
             this.tablaMapa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tablaMapa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tablaMapa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablaMapa.Location = new System.Drawing.Point(173, 23);
+            this.tablaMapa.Location = new System.Drawing.Point(470, 200);
             this.tablaMapa.Name = "tablaMapa";
             this.tablaMapa.RowCount = 2;
             this.tablaForm.SetRowSpan(this.tablaMapa, 2);
             this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tablaMapa.Size = new System.Drawing.Size(594, 354);
+            this.tablaMapa.Size = new System.Drawing.Size(0, 0);
             this.tablaMapa.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -181,15 +184,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Location = new System.Drawing.Point(3, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(138, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Agregar Bitmon";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBoxTipoBitmon
             // 
+            this.comboBoxTipoBitmon.Dock = System.Windows.Forms.DockStyle.Top;
             this.comboBoxTipoBitmon.Enabled = false;
             this.comboBoxTipoBitmon.FormattingEnabled = true;
             this.comboBoxTipoBitmon.Location = new System.Drawing.Point(3, 37);
@@ -221,11 +226,16 @@
             this.botonLimpiar.UseVisualStyleBackColor = true;
             this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // GeneradorMapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(792, 431);
             this.Controls.Add(this.tablaForm);
             this.Name = "GeneradorMapa";
@@ -238,6 +248,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +269,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxTipoBitmon;
         private System.Windows.Forms.Button botonLimpiar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
