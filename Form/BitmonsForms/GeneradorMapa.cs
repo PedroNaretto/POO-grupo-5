@@ -60,7 +60,7 @@ namespace BitmonsForms
                 {
                     Button b = new Button();
                     b.Name = $"Boton{i}{j}";
-                    //b.Width = 526 / columnas;
+                    //b.Width = 526 / columnas;+
                     //b.Height = 374 / filas;
                     b.Visible = true;
                     b.Enabled = true;
@@ -221,16 +221,17 @@ namespace BitmonsForms
             
             if (IniciarSimulacion)
             {
-                //Form meses para resivir el numero de meses que durara la simulacion 
+                //Form meses para recibir el numero de meses que durara la simulacion 
                 //Manera en que la info llegua del Form meses al form GeneradorMapa, para pasar toda la info al siguiente form
                 Meses Fmeses = new Meses();
-                Fmeses.E_PasarMeses += new Meses.PasarMeses(resivirMeses);
+                MessageBox.Show($"{tablaMapa.Controls.Count}");
+                Fmeses.E_PasarMeses += new Meses.PasarMeses(recibirMeses);
                 Fmeses.ShowDialog();
 
                 //Condicion para partir la simulacion
                 if (meses != 0)
                 {
-                    Simulacion simulacion = new Simulacion();
+                    Simulacion simulacion = new Simulacion(bitmons, mapa, filas, columnas, tablaMapa.Controls);
                     this.Hide();
                     simulacion.ShowDialog();
                     this.Close();
@@ -263,7 +264,7 @@ namespace BitmonsForms
             this.Close();
         }
 
-        private void resivirMeses(int NumeroMeses)
+        private void recibirMeses(int NumeroMeses)
         {
             meses = NumeroMeses;
         }

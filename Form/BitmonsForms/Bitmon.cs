@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BitmonsForms
 {
-    class Bitmon
+    public class Bitmon
     {
         Random rnd = new Random();
         public string especie;

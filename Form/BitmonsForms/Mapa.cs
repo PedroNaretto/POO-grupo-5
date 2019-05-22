@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BitmonsForms
 {
-    class Mapa
+    public class Mapa
     {
         static Random rnd = new Random();
         public Terreno[,] Mterrenos;

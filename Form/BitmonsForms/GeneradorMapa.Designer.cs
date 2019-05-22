@@ -209,9 +209,9 @@
             this.BotonAgregarBitmon.Enabled = false;
             this.BotonAgregarBitmon.Location = new System.Drawing.Point(3, 106);
             this.BotonAgregarBitmon.Name = "BotonAgregarBitmon";
-            this.BotonAgregarBitmon.Size = new System.Drawing.Size(138, 39);
+            this.BotonAgregarBitmon.Size = new System.Drawing.Size(138, 41);
             this.BotonAgregarBitmon.TabIndex = 4;
-            this.BotonAgregarBitmon.Text = "Agregar";
+            this.BotonAgregarBitmon.Text = "Agregar Bitmon";
             this.BotonAgregarBitmon.UseVisualStyleBackColor = true;
             this.BotonAgregarBitmon.Click += new System.EventHandler(this.BotonAgregarBitmon_Click);
             // 

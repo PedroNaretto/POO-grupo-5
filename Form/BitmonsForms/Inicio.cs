@@ -25,9 +25,9 @@ namespace BitmonsForms
             }
             else
             {
-                GeneradorMapa simulacion = new GeneradorMapa(Convert.ToInt32(NumeroFilas.Value), Convert.ToInt32(NumeroColumnas.Value));
+                GeneradorMapa GenerarMapa = new GeneradorMapa(Convert.ToInt32(NumeroFilas.Value), Convert.ToInt32(NumeroColumnas.Value));
                 this.Hide();
-                simulacion.ShowDialog();
+                GenerarMapa.ShowDialog();
                 this.Show();
                 
             }

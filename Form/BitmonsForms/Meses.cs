@@ -40,5 +40,10 @@ namespace BitmonsForms
             E_PasarMeses(0);
             this.Close();
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BitmonsForms
 {
-    class Terreno
+    public class Terreno
     {
         public string tipo;
 
