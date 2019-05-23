@@ -58,11 +58,11 @@
             this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tablaForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tablaForm.Controls.Add(this.tablaMapa, 2, 1);
             this.tablaForm.Controls.Add(this.flowLayoutPanel1, 2, 3);
             this.tablaForm.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tablaForm.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tablaForm.Controls.Add(this.botonLimpiar, 1, 3);
+            this.tablaForm.Controls.Add(this.tablaMapa, 2, 1);
             this.tablaForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaForm.Location = new System.Drawing.Point(0, 0);
             this.tablaForm.Name = "tablaForm";
@@ -77,18 +77,19 @@
             // tablaMapa
             // 
             this.tablaMapa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tablaMapa.AutoScroll = true;
             this.tablaMapa.AutoSize = true;
             this.tablaMapa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tablaMapa.ColumnCount = 2;
-            this.tablaMapa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tablaMapa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tablaMapa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tablaMapa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tablaMapa.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.tablaMapa.Location = new System.Drawing.Point(470, 200);
             this.tablaMapa.Name = "tablaMapa";
             this.tablaMapa.RowCount = 2;
             this.tablaForm.SetRowSpan(this.tablaMapa, 2);
-            this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tablaMapa.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tablaMapa.Size = new System.Drawing.Size(0, 0);
             this.tablaMapa.TabIndex = 0;
             // 

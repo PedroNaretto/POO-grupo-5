@@ -91,11 +91,6 @@
             // 
             this.NumeroFilas.Dock = System.Windows.Forms.DockStyle.Left;
             this.NumeroFilas.Location = new System.Drawing.Point(403, 171);
-            this.NumeroFilas.Maximum = new decimal(new int[] {
-            11,
-            0,
-            0,
-            0});
             this.NumeroFilas.Minimum = new decimal(new int[] {
             1,
             0,
@@ -113,11 +108,6 @@
             // NumeroColumnas
             // 
             this.NumeroColumnas.Location = new System.Drawing.Point(403, 198);
-            this.NumeroColumnas.Maximum = new decimal(new int[] {
-            18,
-            0,
-            0,
-            0});
             this.NumeroColumnas.Minimum = new decimal(new int[] {
             1,
             0,

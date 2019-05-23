@@ -66,6 +66,8 @@ namespace BitmonsForms
                     b.Enabled = true;
                     b.TextAlign = ContentAlignment.MiddleCenter;
                     b.Dock = DockStyle.Fill;
+                    b.Height = 55;
+                    b.Width = 55;
                     tablaMapa.Controls.Add(b);
                 }
             }
@@ -73,31 +75,30 @@ namespace BitmonsForms
 
 
 
+            ////Controlamos el estilo y tamaño de cada boton
+            //TableLayoutColumnStyleCollection estiloColumna = tablaMapa.ColumnStyles;
+            //TableLayoutRowStyleCollection estiloFila = tablaMapa.RowStyles;
 
-            //Controlamos el estilo y tamaño de cada boton
-            TableLayoutColumnStyleCollection estiloColumna = tablaMapa.ColumnStyles;
-            TableLayoutRowStyleCollection estiloFila = tablaMapa.RowStyles;
+            //int ancho = tablaMapa.Width;
+            //int alto = tablaMapa.Height;
 
-            int ancho = tablaMapa.Width;
-            int alto = tablaMapa.Height;
+            //foreach (ColumnStyle style in estiloColumna)
+            //{
+            //    style.SizeType = SizeType.AutoSize;
+            //}
 
-            foreach (ColumnStyle style in estiloColumna)
-            {
-                style.SizeType = SizeType.AutoSize;
-            }
+            //foreach (RowStyle style in estiloFila)
+            //{
+            //    style.SizeType = SizeType.AutoSize;
+            //}
 
-            foreach (RowStyle style in estiloFila)
-            {
-                style.SizeType = SizeType.AutoSize;
-            }
+            //foreach (Button boton in tablaMapa.Controls)
+            //{
+            //    boton.Height = 55;
+            //    boton.Width = 55;
+            //}
 
-            foreach (Button boton in tablaMapa.Controls)
-            {
-                boton.Height = 50;
-                boton.Width = 50;
-            }
-
-
+            //tablaMapa.Width = tablaMapa.Height;
 
             //Controlamos el tamaño de los TableLayoutPanels y del form
             //tablaMapa.Width = 500;
@@ -108,7 +109,6 @@ namespace BitmonsForms
             //tablaMapa.AutoSize = true;
             //tablaForm.AutoSize = true;
             //this.AutoSize = true;
-
 
 
 
@@ -144,11 +144,12 @@ namespace BitmonsForms
             Button button = (Button)sender;
 
             //Configuramos la info para que parta todo en blanco
+            comboBoxTipoTerreno.Text = "";
             comboBoxTipoBitmon.Text = "";
             BotonAgregarBitmon.Enabled = false;
             if (button.Tag != null)
             {
-                comboBoxTipoTerreno.Text = button.Tag.ToString();
+                //comboBoxTipoTerreno.Text = button.Tag.ToString();
                 comboBoxTipoBitmon.Enabled = true;
             }
             else
@@ -224,7 +225,6 @@ namespace BitmonsForms
                 //Form meses para recibir el numero de meses que durara la simulacion 
                 //Manera en que la info llegua del Form meses al form GeneradorMapa, para pasar toda la info al siguiente form
                 Meses Fmeses = new Meses();
-                MessageBox.Show($"{tablaMapa.Controls.Count}");
                 Fmeses.E_PasarMeses += new Meses.PasarMeses(recibirMeses);
                 Fmeses.ShowDialog();
 
