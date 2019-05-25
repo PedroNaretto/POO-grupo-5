@@ -259,8 +259,6 @@ namespace BitmonsForms
         //luego de reproducirse recuperan el 30% de tiempo de vida
         public void Relaciones(Bitmon bitmon1, Bitmon bitmon2, int filas, int columnas)
         {
-            if (bitmon1.Hijos != 0 || bitmon2.Hijos != 0)
-            {
                 //probabilidad de la especie del hijo
                 int IP_hijo = rnd.Next(0, 101);
                 string hijo = "";
@@ -277,18 +275,16 @@ namespace BitmonsForms
                         //es de la clase bitmon 1
                         hijo = bitmon1.especie;
                         bitmon1.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
                     else
                     {
                         //es de la clase bitmon 2
                         hijo = bitmon2.especie;
                         bitmon2.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
-                }
+                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+            }
 
                 //probabilidad de ser bitmon 2 mayor a la de bitmon 1
                 if (IP_bit2 > IP_bit1)
@@ -298,18 +294,16 @@ namespace BitmonsForms
                         //es de la clase bitmon 2
                         hijo = bitmon2.especie;
                         bitmon2.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
                     else
                     {
                         //es de la clase bitmon 1
                         hijo = bitmon1.especie;
                         bitmon1.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                     }
-                }
+                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+            }
                 Bitmon bitmon_hijo = new Bitmon(hijo);
                 bool a = true;
                 while (a == true)
@@ -327,7 +321,6 @@ namespace BitmonsForms
                         continue;
                     }
                 }
-            }
         }
 
 

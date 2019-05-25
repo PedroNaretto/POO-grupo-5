@@ -232,76 +232,70 @@ namespace Bitmons1
         //luego de reproducirse recuperan el 30% de tiempo de vida
         public void Relaciones(Bitmon bitmon1, Bitmon bitmon2, int filas, int columnas)
         {
-            if (bitmon1.Hijos != 0 || bitmon2.Hijos != 0)
+            //probabilidad de la especie del hijo
+            int IP_hijo = rnd.Next(0, 101);
+            string hijo = "";
+            //para calcular la probabilidad que sea de un padre o el otro
+            int total = bitmon1.Hijos + bitmon2.Hijos + 2;
+            int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
+            int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
+
+            //probabilidad de ser bitmon 1 mayor a la de bitmon 2
+            if (IP_bit1 > IP_bit2)
             {
-                //probabilidad de la especie del hijo
-                int IP_hijo = rnd.Next(0, 101);
-                string hijo = "";
-                //para calcular la probabilidad que sea de un padre o el otro
-                int total = bitmon1.Hijos + bitmon2.Hijos + 2;
-                int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
-                int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
-
-                //probabilidad de ser bitmon 1 mayor a la de bitmon 2
-                if (IP_bit1 > IP_bit2)
+                if (IP_bit1 <= IP_hijo)
                 {
-                    if (IP_bit1 <= IP_hijo)
-                    {
-                        //es de la clase bitmon 1
-                        hijo = bitmon1.especie;
-                        bitmon1.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-                    }
-                    else
-                    {
-                        //es de la clase bitmon 2
-                        hijo = bitmon2.especie;
-                        bitmon2.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-                    }
+                    //es de la clase bitmon 1
+                    hijo = bitmon1.especie;
+                    bitmon1.Hijos += 1;
                 }
-
-                //probabilidad de ser bitmon 2 mayor a la de bitmon 1
-                if (IP_bit2 > IP_bit1)
+                else
                 {
-                    if (IP_bit2 <= IP_hijo)
-                    {
-                        //es de la clase bitmon 2
-                        hijo = bitmon2.especie;
-                        bitmon2.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-                    }
-                    else
-                    {
-                        //es de la clase bitmon 1
-                        hijo = bitmon1.especie;
-                        bitmon1.Hijos += 1;
-                        bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                        bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-                    }
+                    //es de la clase bitmon 2
+                    hijo = bitmon2.especie;
+                    bitmon2.Hijos += 1;
                 }
-                Bitmon bitmon_hijo = new Bitmon(hijo);
-                bool a = true;
-                while (a == true)
+                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+            }
+
+            //probabilidad de ser bitmon 2 mayor a la de bitmon 1
+            if (IP_bit2 > IP_bit1)
+            {
+                if (IP_bit2 <= IP_hijo)
                 {
-                    int fila = rnd.Next(0, filas - 1);
-                    int colun = rnd.Next(0, columnas - 1);
-                    if (bitmons_simulacion[colun, fila][1] == null)
-                    {
-                        bitmons_simulacion[colun, fila].Add(bitmon_hijo);
-                        bitmons_s.Add(bitmon_hijo);
-                        a = false;
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    //es de la clase bitmon 2
+                    hijo = bitmon2.especie;
+                    bitmon2.Hijos += 1;
+                }
+                else
+                {
+                    //es de la clase bitmon 1
+                    hijo = bitmon1.especie;
+                    bitmon1.Hijos += 1;
+                }
+                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+            }
+            Bitmon bitmon_hijo = new Bitmon(hijo);
+            bool a = true;
+            while (a == true)
+            {
+                int fila = rnd.Next(0, filas - 1);
+                int colun = rnd.Next(0, columnas - 1);
+                if (bitmons_simulacion[colun, fila][1] == null)
+                {
+                    bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                    bitmons_s.Add(bitmon_hijo);
+                    a = false;
+                }
+                else
+                {
+                    continue;
                 }
             }
         }
+
 
 
         //tiempo de vida menor o igual a cero se va al cielo
