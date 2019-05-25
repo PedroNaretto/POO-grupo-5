@@ -284,12 +284,14 @@ namespace Bitmons1
         //luego de reproducirse recuperan el 30% de tiempo de vida
         public void Relaciones(Bitmon bitmon1, Bitmon bitmon2, int filas, int columnas)
         {
+            Bitmon bitmon_hijo;
             //probabilidad de la especie del hijo
             int IP_hijo = rnd.Next(0, 101);
             //para calcular la probabilidad que sea de un padre o el otro
             int total = bitmon1.Hijos + bitmon2.Hijos + 2;
             int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
             int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
+            bool a = true;
 
             //probabilidad de ser bitmon 1 mayor a la de bitmon 2
             if (IP_bit1 >= IP_bit2)
@@ -297,10 +299,9 @@ namespace Bitmons1
                 if (IP_bit1 <= IP_hijo)
                 {
                     //es de la clase bitmon 1
-                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
+                    bitmon_hijo = new Bitmon(bitmon1.especie);
                     bitmon1.Hijos += 1;
-                    bool a = true;
-                    while (a == true)
+                    while (a)
                     {
                         int fila = rnd.Next(0, filas - 1);
                         int colun = rnd.Next(0, columnas - 1);
@@ -319,10 +320,9 @@ namespace Bitmons1
                 else
                 {
                     //es de la clase bitmon 2
-                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
+                    bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
-                    bool a = true;
-                    while (a == true)
+                    while (a)
                     {
                         int fila = rnd.Next(0, filas - 1);
                         int colun = rnd.Next(0, columnas - 1);
@@ -344,15 +344,14 @@ namespace Bitmons1
             }
 
             //probabilidad de ser bitmon 2 mayor a la de bitmon 1
-            if (IP_bit2 > IP_bit1)
+            else if (IP_bit2 > IP_bit1)
             {
                 if (IP_bit2 <= IP_hijo)
                 {
                     //es de la clase bitmon 2
-                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
+                    bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
-                    bool a = true;
-                    while (a == true)
+                    while (a)
                     {
                         int fila = rnd.Next(0, filas - 1);
                         int colun = rnd.Next(0, columnas - 1);
@@ -371,10 +370,9 @@ namespace Bitmons1
                 else
                 {
                     //es de la clase bitmon 1
-                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
+                    bitmon_hijo = new Bitmon(bitmon1.especie);
                     bitmon1.Hijos += 1;
-                    bool a = true;
-                    while (a == true)
+                    while (a)
                     {
                         int fila = rnd.Next(0, filas - 1);
                         int colun = rnd.Next(0, columnas - 1);
@@ -394,18 +392,16 @@ namespace Bitmons1
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
             }
 
-            bool a = true;
-            while (a)
+            bool b = true;
+            while (b)
             {
                 int fila = rnd.Next(0, filas);
                 int colun = rnd.Next(0, columnas);
-                Console.ReadKey();
                 if (bitmons_simulacion[colun, fila].Count < 2)
                 {
                     bitmons_simulacion[fila, colun].Add(bitmon_hijo);
                     bitmons_s.Add(bitmon_hijo);
-                    Console.ReadKey();
-                    a = false;
+                    b = false;
                 }
                 else
                 {
