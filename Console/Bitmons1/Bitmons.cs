@@ -110,77 +110,129 @@ namespace Bitmons1
                     bit_mov[i, j] = new List<Bitmon> { };
                 }
             }
-                    for ( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+             for ( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
                 for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
                 {
-                    foreach (Bitmon bitmon in bitmons_simulacion[i,j])
+                    foreach (Bitmon bitmon in bitmons_simulacion[i, j])
                     {
                         if (bitmon.especie == "Wetar")
                         {
-                            int m = 1;
-                            while (m > 0)
-                            {
-                                int m1 = rnd.Next(-1, 2);
-                                int m2 = rnd.Next(-1, 2);
-                                try
+                            bool bitmonscerca = false;
+                            while (bitmonscerca == false)
+                            {                                
+                                for (int a = -1; a < 2; a++)
                                 {
-                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
+                                    for (int b = -1; b < 2; b++)
                                     {
-                                        bit_mov[i + m1, j + m2].Add(bitmon);
+                                        int alrededor = bitmons_simulacion[i + a, j + b].Count();
+                                        if (alrededor < 2)
+                                        {
+                                            bitmonscerca = true;
+                                        }
                                     }
-                                    m -= 1;
                                 }
-                                catch
+                            }
+                            if (bitmonscerca == true)
+                            {
+                                int m = 1;
+                                while (m > 0)
                                 {
-                                    continue;
+                                    int m1 = rnd.Next(-1, 2);
+                                    int m2 = rnd.Next(-1, 2);
+                                    try
+                                    {
+                                        if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
+                                        {
+                                            bit_mov[i + m1, j + m2].Add(bitmon);
+                                        }
+                                        m -= 1;
+                                    }
+                                    catch
+                                    {
+                                        continue;
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                continue;
                             }
                         }
                         else if (bitmon.especie == "Dorvalo")
                         {
                             int m = 2;
-                            while (m > 0)
+                            int alrededor = 0;
+                            for (int a = -2; a < 3; a++)
                             {
-                                int m1 = rnd.Next(-1, 2);
-                                int m2 = rnd.Next(-1, 2);
-                                try
+                                for (int b = -2; b < 3; b++)
                                 {
-                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() != "Acuatico" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
+                                    alrededor += bitmons_simulacion[i + a, j + b].Count();
+                                }
+                            }
+                            if (alrededor != 18)
+                            {
+                                while (m > 0)
+                                {
+                                    int m1 = rnd.Next(-1, 2);
+                                    int m2 = rnd.Next(-1, 2);
+                                    try
                                     {
-                                        bit_mov[i + m1, j + m2].Add(bitmon);
+                                        if (mapa.Mterrenos[i + m1, j + m2].getTerreno() != "Acuatico" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
+                                        {
+                                            bit_mov[i + m1, j + m2].Add(bitmon);
+                                        }
+                                        m -= 1;
                                     }
-                                    m -= 1;
+                                    catch
+                                    {
+                                        continue;
+                                    }
                                 }
-                                catch
-                                {
-                                    continue;
-                                }
+                            }
+                            else
+                            {
+                                continue;
                             }
                         }
                         else if (bitmon.especie == "Ent")
                         {
-                            bit_mov[ i, j].Add(bitmon);
+                            bit_mov[i, j].Add(bitmon);
                         }
                         else
                         {
                             int m = 1;
-                            while (m > 0)
+                            int alrededor = 0;
+                            for (int a = -1; a < 2; a++)
                             {
-                                int m1 = rnd.Next(-1, 2);
-                                int m2 = rnd.Next(-1, 2);
-                                try
+                                for (int b = -1; b < 2; b++)
                                 {
-                                    if (bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
+                                    alrededor += bitmons_simulacion[i + a, j + b].Count();
+                                }
+                            }
+                            if (alrededor != 18)
+                            {
+                                while (m > 0)
+                                {
+                                    int m1 = rnd.Next(-1, 2);
+                                    int m2 = rnd.Next(-1, 2);
+                                    try
                                     {
-                                        bit_mov[i + m1, j + m2].Add(bitmon);
-                                        m -= 1;
+                                        if (bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
+                                        {
+                                            bit_mov[i + m1, j + m2].Add(bitmon);
+                                            m -= 1;
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        continue;
                                     }
                                 }
-                                catch
-                                {
-                                    continue;
-                                }
+                            }
+                            else
+                            {
+                                continue;
                             }
                         }
                     }
@@ -234,7 +286,6 @@ namespace Bitmons1
         {
             //probabilidad de la especie del hijo
             int IP_hijo = rnd.Next(0, 101);
-            string hijo = "";
             //para calcular la probabilidad que sea de un padre o el otro
             int total = bitmon1.Hijos + bitmon2.Hijos + 2;
             int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
@@ -265,19 +316,18 @@ namespace Bitmons1
                 if (IP_bit2 <= IP_hijo)
                 {
                     //es de la clase bitmon 2
-                    hijo = bitmon2.especie;
+                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
                 }
                 else
                 {
                     //es de la clase bitmon 1
-                    hijo = bitmon1.especie;
+                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
                     bitmon1.Hijos += 1;
                 }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
             }
-            Bitmon bitmon_hijo = new Bitmon(hijo);
             bool a = true;
             while (a == true)
             {
