@@ -12,20 +12,21 @@ namespace BitmonsForms
 {
     public partial class Simulacion : Form
     {
+        int contador = 0;
         Bitmons bitmons;
         Mapa mapa;
         int filas;
         int columnas;
-        TableLayoutControlCollection controles;
+        int meses;
 
-        public Simulacion( Bitmons bitmons, Mapa mapa, int filas, int columnas, TableLayoutControlCollection controles)
+        public Simulacion(Bitmons bitmons, Mapa mapa, int filas, int columnas, int meses)
         {
             InitializeComponent();
             this.bitmons = bitmons;
             this.mapa = mapa;
             this.filas = filas;
             this.columnas = columnas;
-            this.controles = controles;
+            this.meses = meses;
         }
 
         private void Simulacion_Load(object sender, EventArgs e)
@@ -79,7 +80,10 @@ namespace BitmonsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //hacer simulacion NARUTO APURATE
+            if (contador < meses)
+            {
+                contador += 1;
+            }
         }
     }
 }

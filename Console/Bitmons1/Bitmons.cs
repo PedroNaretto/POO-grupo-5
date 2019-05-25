@@ -160,7 +160,7 @@ namespace Bitmons1
                         }
                         else if (bitmon.especie == "Ent")
                         {
-                            continue;
+                            bit_mov[ i, j].Add(bitmon);
                         }
                         else
                         {
@@ -176,7 +176,6 @@ namespace Bitmons1
                                         bit_mov[i + m1, j + m2].Add(bitmon);
                                         m -= 1;
                                     }
-                                    Console.ReadKey();
                                 }
                                 catch
                                 {

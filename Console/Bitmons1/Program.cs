@@ -65,7 +65,7 @@ namespace Bitmons1
             List<Bitmon>[,] bitmons_simulacion = bitmons.bitmons_simulacion;
             List<Bitmon> bitmons_s = bitmons.bitmons_s;
 
-            for (int meses = 1; meses < tiempo_simulacion; meses++)
+            for (int meses = 1; meses <= tiempo_simulacion; meses++)
             {
                 Console.WriteLine("-----------------------------");
                 Console.WriteLine($"Simulacion mes {meses}");
@@ -74,14 +74,14 @@ namespace Bitmons1
                 {
                     Bitmon bitmon = new Bitmon("Ent");
                     bool a = true;
-                    while (a == true)
+                    while (a)
                     {
                         int fila = rnd.Next(0, columnas);
                         int colun = rnd.Next(0, filas);
                         if (bitmons_simulacion[colun, fila].Count() < 2)
                         {
-                            bitmons_simulacion[colun, fila].Add(bitmon);
-                            bitmons_s.Add(bitmon);
+                            bitmons.bitmons_simulacion[colun, fila].Add(bitmon);
+                            bitmons.bitmons_s.Add(bitmon);
                             a = false;
                         }
                         else
@@ -330,6 +330,7 @@ namespace Bitmons1
             Console.WriteLine("Descripcion Doti en bithalla: " + "cantidad: " + Convert.ToString(muertos_doti) + Convert.ToString((muertos_doti/ total_bithalla)*100));
             Console.WriteLine("Descripcion Ent en bithalla: " + "cantidad: " + Convert.ToString(muertos_ent) + Convert.ToString((muertos_ent / total_bithalla)*100));
 
+            Console.ReadKey();
         }
     }
 }

@@ -231,7 +231,7 @@ namespace BitmonsForms
                 //Condicion para partir la simulacion
                 if (meses != 0)
                 {
-                    Simulacion simulacion = new Simulacion(bitmons, mapa, filas, columnas, tablaMapa.Controls);
+                    Simulacion simulacion = new Simulacion(bitmons, mapa, filas, columnas, meses);
                     this.Hide();
                     simulacion.ShowDialog();
                     this.Close();

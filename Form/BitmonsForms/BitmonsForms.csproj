@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Bitmon.cs" />
     <Compile Include="Bitmons.cs" />
+    <Compile Include="Controlador.cs" />
     <Compile Include="GeneradorMapa.cs">
       <SubType>Form</SubType>
     </Compile>
