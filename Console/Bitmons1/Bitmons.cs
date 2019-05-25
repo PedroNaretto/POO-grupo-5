@@ -297,17 +297,50 @@ namespace Bitmons1
                 if (IP_bit1 <= IP_hijo)
                 {
                     //es de la clase bitmon 1
-                    hijo = bitmon1.especie;
+                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
                     bitmon1.Hijos += 1;
+                    bool a = true;
+                    while (a == true)
+                    {
+                        int fila = rnd.Next(0, filas - 1);
+                        int colun = rnd.Next(0, columnas - 1);
+                        if (bitmons_simulacion[colun, fila][1] == null)
+                        {
+                            bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                            bitmons_s.Add(bitmon_hijo);
+                            a = false;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
                 }
                 else
                 {
                     //es de la clase bitmon 2
-                    hijo = bitmon2.especie;
+                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
+                    bool a = true;
+                    while (a == true)
+                    {
+                        int fila = rnd.Next(0, filas - 1);
+                        int colun = rnd.Next(0, columnas - 1);
+                        if (bitmons_simulacion[colun, fila][1] == null)
+                        {
+                            bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                            bitmons_s.Add(bitmon_hijo);
+                            a = false;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
                 }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+
             }
 
             //probabilidad de ser bitmon 2 mayor a la de bitmon 1
@@ -318,31 +351,47 @@ namespace Bitmons1
                     //es de la clase bitmon 2
                     Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
+                    bool a = true;
+                    while (a == true)
+                    {
+                        int fila = rnd.Next(0, filas - 1);
+                        int colun = rnd.Next(0, columnas - 1);
+                        if (bitmons_simulacion[colun, fila][1] == null)
+                        {
+                            bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                            bitmons_s.Add(bitmon_hijo);
+                            a = false;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
                 }
                 else
                 {
                     //es de la clase bitmon 1
                     Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
                     bitmon1.Hijos += 1;
+                    bool a = true;
+                    while (a == true)
+                    {
+                        int fila = rnd.Next(0, filas - 1);
+                        int colun = rnd.Next(0, columnas - 1);
+                        if (bitmons_simulacion[colun, fila][1] == null)
+                        {
+                            bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                            bitmons_s.Add(bitmon_hijo);
+                            a = false;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
                 }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-            }
-            bool a = true;
-            while (a == true)
-            {
-                int fila = rnd.Next(0, filas - 1);
-                int colun = rnd.Next(0, columnas - 1);
-                if (bitmons_simulacion[colun, fila][1] == null)
-                {
-                    bitmons_simulacion[colun, fila].Add(bitmon_hijo);
-                    bitmons_s.Add(bitmon_hijo);
-                    a = false;
-                }
-                else
-                {
-                    continue;
-                }
             }
         }
 
