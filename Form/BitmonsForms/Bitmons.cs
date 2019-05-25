@@ -310,7 +310,7 @@ namespace BitmonsForms
                 {
                     int fila = rnd.Next(0, filas - 1);
                     int colun = rnd.Next(0, columnas - 1);
-                    if (bitmons_simulacion[colun, fila][1] == null)
+                    if (bitmons_simulacion[fila, colun].Count <= 2)
                     {
                         bitmons_simulacion[colun, fila].Add(bitmon_hijo);
                         bitmons_s.Add(bitmon_hijo);

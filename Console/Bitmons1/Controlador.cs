@@ -69,7 +69,11 @@ namespace Bitmons1
             {
                 for (int j = 0; j < cMapa.Mterrenos.GetUpperBound(1); j++)
                 {
-                    foreach(Bitmon bitmon in cBitmons.bitmons_simulacion[i,j])
+                    foreach (Bitmon bitmon in cBitmons.bitmons_simulacion[i, j])
+                    {
+                        Console.WriteLine($"{bitmon.especie}");
+                    }
+                    foreach (Bitmon bitmon in cBitmons.bitmons_simulacion[i,j])
                     {
                         string t = cMapa.Mterrenos[i, j].getTerreno();
                         if (bitmon.debilidad.Contains(t))

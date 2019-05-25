@@ -241,7 +241,7 @@ namespace Bitmons1
             int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
 
             //probabilidad de ser bitmon 1 mayor a la de bitmon 2
-            if (IP_bit1 > IP_bit2)
+            if (IP_bit1 >= IP_bit2)
             {
                 if (IP_bit1 <= IP_hijo)
                 {
@@ -277,16 +277,19 @@ namespace Bitmons1
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
             }
+
             Bitmon bitmon_hijo = new Bitmon(hijo);
             bool a = true;
-            while (a == true)
+            while (a)
             {
-                int fila = rnd.Next(0, filas - 1);
-                int colun = rnd.Next(0, columnas - 1);
-                if (bitmons_simulacion[colun, fila][1] == null)
+                int fila = rnd.Next(0, filas);
+                int colun = rnd.Next(0, columnas);
+                Console.ReadKey();
+                if (bitmons_simulacion[colun, fila].Count < 2)
                 {
-                    bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                    bitmons_simulacion[fila, colun].Add(bitmon_hijo);
                     bitmons_s.Add(bitmon_hijo);
+                    Console.ReadKey();
                     a = false;
                 }
                 else
@@ -301,7 +304,13 @@ namespace Bitmons1
         //tiempo de vida menor o igual a cero se va al cielo
         public void Bithalla()
         {
-            foreach (Bitmon bitmon in bitmons_s)
+            List<Bitmon> bits = new List<Bitmon> { };
+            foreach (Bitmon bit in bitmons_s)
+            {
+                bits.Add(bit);
+            }
+
+            foreach (Bitmon bitmon in bits)
             {
                 if (bitmon.TiempoVida <= 0)
                 {

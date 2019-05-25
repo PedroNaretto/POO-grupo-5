@@ -78,7 +78,7 @@ namespace Bitmons1
                     {
                         int fila = rnd.Next(0, columnas);
                         int colun = rnd.Next(0, filas);
-                        if (bitmons_simulacion[colun, fila].Count() < 2)
+                        if (bitmons.bitmons_simulacion[colun, fila].Count() < 2)
                         {
                             bitmons.bitmons_simulacion[colun, fila].Add(bitmon);
                             bitmons.bitmons_s.Add(bitmon);
@@ -102,13 +102,9 @@ namespace Bitmons1
                             {
                                 bitmons.Peleas(b1, b2);
                             }
-                            else if (b1.afinidad.Contains(b2.especie))
-                            {
-                                bitmons.Relaciones(b1, b2, filas, columnas);
-                            }
                             else
                             {
-                                continue;
+                                bitmons.Relaciones(b1, b2, filas, columnas);
                             }
                         }
                     }

@@ -12,6 +12,8 @@ namespace BitmonsForms
 {
     public partial class Simulacion : Form
     {
+        Random rnd = new Random();
+        Controlador controlador = new Controlador();
         int contador = 0;
         Bitmons bitmons;
         Mapa mapa;
@@ -80,8 +82,69 @@ namespace BitmonsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (meses % 3 == 0)
+            {
+                Bitmon bitmon = new Bitmon("Ent");
+                bool a = true;
+                while (a)
+                {
+                    int fila = rnd.Next(0, columnas);
+                    int colun = rnd.Next(0, filas);
+                    if (bitmons.bitmons_simulacion[colun, fila].Count() < 2)
+                    {
+                        bitmons.bitmons_simulacion[colun, fila].Add(bitmon);
+                        bitmons.bitmons_s.Add(bitmon);
+                        a = false;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    if (bitmons.bitmons_simulacion[i, j].Count() == 2)
+                    {
+                        Bitmon b1 = bitmons.bitmons_simulacion[i, j][0];
+                        Bitmon b2 = bitmons.bitmons_simulacion[i, j][1];
+                        if (b1.rivalidad.Contains(b2.especie))
+                        {
+                            bitmons.Peleas(b1, b2);
+                        }
+                        else
+                        {
+                            bitmons.Relaciones(b1, b2, filas, columnas);
+                        }
+                    }
+                }
+
+            }
+            controlador.Entorno(mapa, bitmons);
+            bitmons.Bithalla();
+            bitmons.movimientos(mapa);
+
+
+            int indice = 0;
             if (contador < meses)
             {
+                for (int i = 0; i < filas; i++)
+                {
+                    for (int j = 0; j < columnas; j++)
+                    {
+                        MapaSimulacion.Controls[indice].Tag = mapa.Mterrenos[i, j].tipo;
+                        string especies = "";
+                        foreach(Bitmon bitmon in bitmons.bitmons_simulacion[i,j])
+                        {
+                            especies += $"{bitmon.especie}\n";
+                        }
+                        MapaSimulacion.Controls[indice].Text = especies;
+                        MapaSimulacion.Controls[indice].BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
+
+                    }
+                }
                 contador += 1;
             }
         }
