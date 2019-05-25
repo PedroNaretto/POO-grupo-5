@@ -22,3 +22,16 @@ C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto
 C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.pdb
 C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Meses.resources
 C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Simulacion.resources
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\bin\Debug\BitmonsForms.exe.config
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\bin\Debug\BitmonsForms.exe
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\bin\Debug\BitmonsForms.pdb
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csprojAssemblyReference.cache
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.GeneradorMapa.resources
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Inicio.resources
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Meses.resources
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Properties.Resources.resources
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Simulacion.resources
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csproj.GenerateResource.cache
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csproj.CoreCompileInputs.cache
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.exe
+C:\Users\Martha\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.pdb
