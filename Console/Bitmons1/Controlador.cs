@@ -71,7 +71,7 @@ namespace Bitmons1
                 {
                     foreach (Bitmon bitmon in cBitmons.bitmons_simulacion[i, j])
                     {
-                        Console.WriteLine($"{bitmon.especie}");
+                        //Console.WriteLine($"{bitmon.especie}");
                     }
                     foreach (Bitmon bitmon in cBitmons.bitmons_simulacion[i,j])
                     {
