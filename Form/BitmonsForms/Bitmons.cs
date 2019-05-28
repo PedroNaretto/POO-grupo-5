@@ -261,14 +261,14 @@ namespace BitmonsForms
         {
                 //probabilidad de la especie del hijo
                 int IP_hijo = rnd.Next(0, 101);
-                string hijo = "";
+                string hijo;
                 //para calcular la probabilidad que sea de un padre o el otro
                 int total = bitmon1.Hijos + bitmon2.Hijos + 2;
                 int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
                 int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
 
                 //probabilidad de ser bitmon 1 mayor a la de bitmon 2
-                if (IP_bit1 > IP_bit2)
+                if (IP_bit1 >= IP_bit2)
                 {
                     if (IP_bit1 <= IP_hijo)
                     {
@@ -282,12 +282,12 @@ namespace BitmonsForms
                         hijo = bitmon2.especie;
                         bitmon2.Hijos += 1;
                     }
-                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+                    bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                    bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                 }
 
                 //probabilidad de ser bitmon 2 mayor a la de bitmon 1
-                if (IP_bit2 > IP_bit1)
+                else
                 {
                     if (IP_bit2 <= IP_hijo)
                     {
@@ -301,8 +301,8 @@ namespace BitmonsForms
                         hijo = bitmon1.especie;
                         bitmon1.Hijos += 1;
                     }
-                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+                    bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                    bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
                 }
                 Bitmon bitmon_hijo = new Bitmon(hijo);
                 bool a = true;

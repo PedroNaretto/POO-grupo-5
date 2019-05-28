@@ -126,27 +126,22 @@ namespace BitmonsForms
             bitmons.Bithalla();
             bitmons.movimientos(mapa);
 
-
-            int indice = 0;
-            if (contador < meses)
+            TableLayoutPanelCellPosition posicion;
+            foreach (Button boton in MapaSimulacion.Controls)
             {
-                for (int i = 0; i < filas; i++)
+                posicion = MapaSimulacion.GetPositionFromControl(boton);
+                int i = posicion.Row;
+                int j = posicion.Column;
+                string texto = "";
+                foreach(Bitmon bitmon in bitmons.bitmons_simulacion[i, j])
                 {
-                    for (int j = 0; j < columnas; j++)
-                    {
-                        MapaSimulacion.Controls[indice].Tag = mapa.Mterrenos[i, j].tipo;
-                        string especies = "";
-                        foreach(Bitmon bitmon in bitmons.bitmons_simulacion[i,j])
-                        {
-                            especies += $"{bitmon.especie}\n";
-                        }
-                        MapaSimulacion.Controls[indice].Text = especies;
-                        MapaSimulacion.Controls[indice].BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
-
-                    }
+                    texto += $"{bitmon.especie}\n";
                 }
-                contador += 1;
+                boton.Text = texto;
+                boton.Tag = mapa.Mterrenos[i, j].tipo;
+                boton.BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
             }
+            contador += 1;
         }
     }
 }

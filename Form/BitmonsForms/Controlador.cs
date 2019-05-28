@@ -72,7 +72,7 @@ namespace BitmonsForms
                     foreach (Bitmon bitmon in cBitmons.bitmons_simulacion[i, j])
                     {
                         string t = cMapa.Mterrenos[i, j].getTerreno();
-                        if (bitmon.debilidad.Contains(t))
+                        if (bitmon.debilidad.Contains(t) && bitmon.especie == "")
                         {
                             bitmon.TiempoVida -= 2;
                         }
