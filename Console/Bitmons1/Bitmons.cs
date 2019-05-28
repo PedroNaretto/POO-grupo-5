@@ -102,7 +102,7 @@ namespace Bitmons1
         //movimiento x mes para los bitmons
         public void movimientos(Mapa mapa)
         {
-            List<Bitmon>[,] bit_mov = new List<Bitmon>[bitmons_simulacion.GetUpperBound(0)+1, bitmons_simulacion.GetUpperBound(1)+1];
+            List<Bitmon>[,] bit_mov = new List<Bitmon>[bitmons_simulacion.GetUpperBound(0) + 1, bitmons_simulacion.GetUpperBound(1) + 1];
             for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
                 for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
@@ -110,7 +110,7 @@ namespace Bitmons1
                     bit_mov[i, j] = new List<Bitmon> { };
                 }
             }
-             for ( int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+            for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
                 for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
                 {
@@ -118,171 +118,70 @@ namespace Bitmons1
                     {
                         if (bitmon.especie == "Wetar")
                         {
-                            bool move = false;
-                            bool bitmonscerca1 = true;
-                            while (bitmonscerca1 == true)
+                            int m = 1;
+                            while (m > 0)
                             {
-                                Console.WriteLine("1");
-                                for (int a = -1; a < 2; a++)
+                                int m1 = rnd.Next(-1, 2);
+                                int m2 = rnd.Next(-1, 2);
+                                try
                                 {
-                                    for (int b = -1; b < 2; b++)
+                                    if (bitmon.especie == "Wetar" && mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
                                     {
-                                        try
-                                        {
-                                            int alrededor = bitmons_simulacion[i + a, j + b].Count();
-                                            if (alrededor < 2)
-                                            {
-                                                move = true;
-                                            }
-                                        }
-                                        catch
-                                        {
-                                            continue;
-                                        }
+                                        bit_mov[i + m1, j + m2].Add(bitmon);
                                     }
+                                    m -= 1;
                                 }
-                                bitmonscerca1 = false;
-
-                            }
-                            if (move == true)
-                            {
-                                bool m = true;
-                                while (m == true)
+                                catch
                                 {
-                                    Console.WriteLine("2");
-                                    int m1 = rnd.Next(-1, 2);
-                                    int m2 = rnd.Next(-1, 2);
-                                    try
-                                    {
-                                        if (mapa.Mterrenos[i + m1, j + m2].getTerreno() == "Agua" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
-                                        {
-                                            bit_mov[i + m1, j + m2].Add(bitmon);
-                                            m = false;
-                                        }
-                                    }
-                                    catch
-                                    {
-                                        continue;
-                                    }
+                                    continue;
                                 }
-                            }
-                            else
-                            {
-                                Console.WriteLine("prueba 1");
                             }
                         }
                         else if (bitmon.especie == "Dorvalo")
                         {
-                            bool move = false;
-                            bool bitmonscerca1 = true;
-                            while (bitmonscerca1 == true)
+                            int m = 2;
+                            while (m > 0)
                             {
-                                Console.WriteLine("3");
-                                for (int a = -2; a < 3; a++)
+                                int m1 = rnd.Next(-1, 2);
+                                int m2 = rnd.Next(-1, 2);
+                                try
                                 {
-                                    for (int b = -2; b < 3; b++)
+                                    if (mapa.Mterrenos[i + m1, j + m2].getTerreno() != "Acuatico" && bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
                                     {
-                                        try
-                                        {
-                                            int alrededor = bitmons_simulacion[i + a, j + b].Count();
-                                            if (alrededor < 2)
-                                            {
-                                                move = true;
-                                            }
-                                        }
-                                        catch
-                                        {
-                                            continue;
-                                        }
+                                        bit_mov[i + m1, j + m2].Add(bitmon);
                                     }
+                                    m -= 1;
                                 }
-                                bitmonscerca1 = false;
-                            }
-                            if (move == true)
-                            {
-                                bool m = true;
-                                while (m == true)
+                                catch
                                 {
-                                    Console.WriteLine("4");
-                                    int m1 = rnd.Next(-2, 3);
-                                    int m2 = rnd.Next(-2, 3);
-                                    try
-                                    {
-                                        if (bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
-                                        {
-                                            bit_mov[i + m1, j + m2].Add(bitmon);
-                                            m = false;
-                                        }                                       
-                                    }
-                                    catch
-                                    {
-                                        continue;
-                                    }
+                                    continue;
                                 }
                             }
-                            else
-                            {
-                                Console.WriteLine("prueba 2");
-                            }
-                        }                      
-                        
+                        }
                         else if (bitmon.especie == "Ent")
                         {
-                            bit_mov[i, j].Add(bitmon);
+                            continue;
                         }
                         else
                         {
-                            bool move = false;
-                            bool bitmonscerca1 = true;
-                            while (bitmonscerca1 == true)
+                            int m = 1;
+                            while (m > 0)
                             {
-                                Console.WriteLine("5");
-                                for (int a = -1; a < 2; a++)
+                                int m1 = rnd.Next(-1, 2);
+                                int m2 = rnd.Next(-1, 2);
+                                try
                                 {
-                                    for (int b = -1; b < 2; b++)
+                                    if (bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
                                     {
-                                        try
-                                        {
-                                            int alrededor = bitmons_simulacion[i + a, j + b].Count();
-                                            if (alrededor < 2)
-                                            {
-                                                move = true;
-                                            }
-                                        }
-                                        catch
-                                        {
-                                            continue;
-                                        }
+                                        bit_mov[i + m1, j + m2].Add(bitmon);
+                                        m -= 1;
                                     }
+                                    Console.ReadKey();
                                 }
-                                bitmonscerca1 = false;
-
-                            }
-                            if (move == true)
-                            {
-                                 bool m = true;                     
-                                 while (m == true)
+                                catch
                                 {
-                                    Console.WriteLine("6");
-                                    int m1 = rnd.Next(-1, 2);
-                                    int m2 = rnd.Next(-1, 2);
-                                    try
-                                    {
-                                        if (bitmons_simulacion[i + m1, j + m2].Count() < 2 && bit_mov[i + m1, j + m2].Count() < 2)
-                                        {
-                                            bit_mov[i + m1, j + m2].Add(bitmon);
-                                            m = false;
-                                        }
-                                    }
-                                    catch
-                                    {
-                                        continue;
-                                    }
+                                    continue;
                                 }
-                            }
-                            else
-                            {
-                                Console.WriteLine("prueba 3");
                             }
                         }
                     }
@@ -349,11 +248,10 @@ namespace Bitmons1
                 {
                     bool a = true;
                     //es de la clase bitmon 2
-                    bitmon_hijo = new Bitmon(bitmon2.especie);
+                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
                     while (a)
                     {
-                        Console.WriteLine("10");
                         int fila = rnd.Next(0, filas + 1);
                         int colun = rnd.Next(0, columnas + 1);
                         try
@@ -374,12 +272,11 @@ namespace Bitmons1
                 else
                 {
                     //es de la clase bitmon 1
-                    bitmon_hijo = new Bitmon(bitmon1.especie);
+                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
                     bitmon1.Hijos += 1;
                     bool a = true;
                     while (a)
-                    {
-                        Console.WriteLine("11");
+                    { 
                         int fila = rnd.Next(0, filas + 1);
                         int colun = rnd.Next(0, columnas + 1);
                         try
@@ -408,12 +305,11 @@ namespace Bitmons1
                 if (IP_bit2 <= IP_hijo)
                 {
                     //es de la clase bitmon 1
-                    bitmon_hijo = new Bitmon(bitmon1.especie);
+                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
                     bool a = true;
                     bitmon1.Hijos += 1;
                     while (a)
                     {
-                        Console.WriteLine("12");
                         int fila = rnd.Next(0, filas + 1);
                         int colun = rnd.Next(0, columnas + 1);
                         try
@@ -434,12 +330,11 @@ namespace Bitmons1
                 else
                 {
                     //es de la clase bitmon2
-                    bitmon_hijo = new Bitmon(bitmon2.especie);
+                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
                     bitmon2.Hijos += 1;
                     bool a = true;
                     while (a)
-                    {
-                        Console.WriteLine("13");
+                    { 
                         int fila = rnd.Next(0, filas + 1);
                         int colun = rnd.Next(0, columnas + 1);
                         try
