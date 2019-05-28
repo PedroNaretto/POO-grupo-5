@@ -82,19 +82,19 @@ namespace BitmonsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (meses % 3 == 0)
+            if (contador % 3 == 0 && contador != 0)
             {
                 Bitmon bitmon = new Bitmon("Ent");
-                bool a = true;
-                while (a)
+                while (true)
                 {
                     int fila = rnd.Next(0, columnas);
                     int colun = rnd.Next(0, filas);
                     if (bitmons.bitmons_simulacion[colun, fila].Count() < 2)
                     {
+                        label1.Text = "agregando ent";
                         bitmons.bitmons_simulacion[colun, fila].Add(bitmon);
                         bitmons.bitmons_s.Add(bitmon);
-                        a = false;
+                        break;
                     }
                     else
                     {
@@ -142,6 +142,7 @@ namespace BitmonsForms
                 boton.BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
             }
             contador += 1;
+            label1.Text +=  contador.ToString();
         }
     }
 }

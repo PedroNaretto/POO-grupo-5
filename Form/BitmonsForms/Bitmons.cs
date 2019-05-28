@@ -186,7 +186,7 @@ namespace BitmonsForms
                         }
                         else if (bitmon.especie == "Ent")
                         {
-                            continue;
+                            bit_mov[i , j].Add(bitmon);
                         }
                         else
                         {
