@@ -284,7 +284,7 @@ namespace BitmonsForms
                     }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-            }
+                }
 
                 //probabilidad de ser bitmon 2 mayor a la de bitmon 1
                 if (IP_bit2 > IP_bit1)
@@ -303,7 +303,7 @@ namespace BitmonsForms
                     }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-            }
+                }
                 Bitmon bitmon_hijo = new Bitmon(hijo);
                 bool a = true;
                 while (a == true)

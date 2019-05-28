@@ -250,7 +250,7 @@ namespace BitmonsForms
             celdaSeleccionada.BackColor = SystemColors.Control;
             celdaSeleccionada.Text = "";
 
-            mapa.Mterrenos[posicion.Row, posicion.Column] = null;
+            mapa.Mterrenos[posicion.Row, posicion.Column].tipo = null;
             bitmons.bitmons_simulacion[posicion.Row, posicion.Column].Clear();
 
             comboBoxTipoBitmon.Text = "";
