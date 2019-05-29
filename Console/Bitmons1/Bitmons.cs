@@ -22,11 +22,21 @@ namespace Bitmons1
         {
         }
 
+        public string MostrarBitmons(List<Bitmon> bitmons)
+        {
+            string texto = "";
+            foreach (Bitmon bitmon in bitmons)
+            {
+                texto += bitmon.especie + "\n";
+            }
+            return texto;
+        }
+
         //configuracion inicial del mapa
         public void Spawn(Mapa mapa)
         {
-            int filas = mapa.Mterrenos.GetUpperBound(0) +1;
-            int columnas = mapa.Mterrenos.GetUpperBound(1) +1;
+            int filas = mapa.Mterrenos.GetUpperBound(0) + 1;
+            int columnas = mapa.Mterrenos.GetUpperBound(1) + 1;
 
             //creacion de arrays para los bitmons y terrenos del usuario
             bitmons_simulacion = new List<Bitmon>[filas, columnas];
@@ -160,7 +170,7 @@ namespace Bitmons1
                         }
                         else if (bitmon.especie == "Ent")
                         {
-                            continue;
+                            bit_mov[i, j].Add(bitmon);
                         }
                         else
                         {
@@ -194,39 +204,92 @@ namespace Bitmons1
         public void Peleas(Bitmon bitmon1, Bitmon bitmon2)
         {
             //bitmon ataque simultaneo
-            foreach (string bitmon in bitmon1.rivalidad)
-            {
-                if (bitmon == bitmon2.especie)
-                {
-                    //daño = puntos de ataque*multiplicador  
-                    //cada bitmon descuenta de sus puntos de vida el daño 
-                    bitmon2.PuntosDeVida -= bitmon2.PuntosDeVida * (bitmon1.PuntosDeAtaque * Convert.ToInt32(bitmon2.Atacar(bitmon1, bitmon2)));
-                    bitmon1.PuntosDeVida -= bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * Convert.ToInt32(bitmon1.Atacar(bitmon1, bitmon2)));
-                }
-                else
-                {
-                    continue;
-                }
-            }
+            //daño = puntos de ataque*multiplicador  
+            //cada bitmon descuenta de sus puntos de vida el daño 
+            bitmon2.PuntosDeVida -= bitmon2.PuntosDeVida * (bitmon1.PuntosDeAtaque * Convert.ToInt32(bitmon2.Atacar(bitmon1, bitmon2)));
+            bitmon1.PuntosDeVida -= bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * Convert.ToInt32(bitmon1.Atacar(bitmon1, bitmon2)));
 
-            //si uno muere el otro recupera los puntos de vida que perdio
-            if (bitmon1.PuntosDeVida <= 0)
-            {
-                bithalla.Add(bitmon1);
-                bitmon2.PuntosDeVida += bitmon2.PuntosDeVida * (bitmon1.PuntosDeAtaque * Convert.ToInt32(bitmon2.Atacar(bitmon1, bitmon2)));
-            }
-            if (bitmon2.PuntosDeVida <= 0)
-            {
-                bithalla.Add(bitmon2);
-                bitmon1.PuntosDeVida += bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * Convert.ToInt32(bitmon1.Atacar(bitmon1, bitmon2)));
-            }
 
             //pueden ambos irse a bithalla despues
             if (bitmon1.PuntosDeVida == 0 && bitmon2.PuntosDeVida == 0)
             {
                 bithalla.Add(bitmon1);
                 bithalla.Add(bitmon2);
+
+                //elimina el bitmon de la lista de la simulacion
+                bitmons_s.Remove(bitmon1);
+                bitmons_s.Remove(bitmon2);
+
+                //elimina el bitmon del array de la simulacion
+                for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+                {
+                    for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
+                    {
+                        if (bitmons_simulacion[i, j].Contains(bitmon1) && bitmons_simulacion[i, j].Contains(bitmon2))
+                        {
+                            bitmons_simulacion[i, j].Remove(bitmon1);
+                            bitmons_simulacion[i, j].Remove(bitmon2);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
             }
+
+            //si uno muere el otro recupera los puntos de vida que perdio
+
+            else if (bitmon1.PuntosDeVida <= 0)
+            {
+                bithalla.Add(bitmon1);
+
+                //elimina el bitmon de la lista de la simulacion
+                bitmons_s.Remove(bitmon1);
+
+                //elimina el bitmon del array de la simulacion
+                for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+                {
+                    for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
+                    {
+                        if (bitmons_simulacion[i, j].Contains(bitmon1))
+                        {
+                            bitmons_simulacion[i, j].Remove(bitmon1);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                bitmon2.PuntosDeVida += bitmon2.PuntosDeVida * (bitmon1.PuntosDeAtaque * Convert.ToInt32(bitmon2.Atacar(bitmon1, bitmon2)));
+            }
+
+            else if (bitmon2.PuntosDeVida <= 0)
+            {
+                bithalla.Add(bitmon2);
+                bitmon1.PuntosDeVida += bitmon1.PuntosDeVida * (bitmon2.PuntosDeAtaque * Convert.ToInt32(bitmon1.Atacar(bitmon1, bitmon2)));
+
+                //elimina el bitmon de la lista de la simulacion
+                bitmons_s.Remove(bitmon2);
+
+                //elimina el bitmon del array de la simulacion
+                for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
+                {
+                    for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
+                    {
+                        if (bitmons_simulacion[i, j].Contains(bitmon2))
+                        {
+                            bitmons_simulacion[i, j].Remove(bitmon2);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+
         }
 
         //relacion de reproduccion entre bitmons
@@ -235,141 +298,73 @@ namespace Bitmons1
         {
             //probabilidad de la especie del hijo
             int IP_hijo = rnd.Next(0, 101);
+            string hijo;
             //para calcular la probabilidad que sea de un padre o el otro
             int total = bitmon1.Hijos + bitmon2.Hijos + 2;
             int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
             int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
 
-            
             //probabilidad de ser bitmon 1 mayor a la de bitmon 2
             if (IP_bit1 >= IP_bit2)
             {
                 if (IP_bit1 <= IP_hijo)
                 {
-                    bool a = true;
-                    //es de la clase bitmon 2
-                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
-                    bitmon2.Hijos += 1;
-                    while (a)
-                    {
-                        int fila = rnd.Next(0, filas + 1);
-                        int colun = rnd.Next(0, columnas + 1);
-                        try
-                        {
-                            if (bitmons_simulacion[colun, fila].Count < 2)
-                            {
-                                bitmons_simulacion[colun, fila].Add(bitmon_hijo);
-                                bitmons_s.Add(bitmon_hijo);
-                                a = false;
-                            }
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                    }
+                    //es de la clase bitmon 1
+                    hijo = bitmon1.especie;
+                    bitmon1.Hijos += 1;
                 }
                 else
                 {
-                    //es de la clase bitmon 1
-                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
-                    bitmon1.Hijos += 1;
-                    bool a = true;
-                    while (a)
-                    { 
-                        int fila = rnd.Next(0, filas + 1);
-                        int colun = rnd.Next(0, columnas + 1);
-                        try
-                        {
-                            if (bitmons_simulacion[colun, fila].Count < 2)
-                            {
-                                bitmons_simulacion[colun, fila].Add(bitmon_hijo);
-                                bitmons_s.Add(bitmon_hijo);
-                                a = false;
-                            }
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                    }
+                    //es de la clase bitmon 2
+                    hijo = bitmon2.especie;
+                    bitmon2.Hijos += 1;
                 }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
-
             }
 
             //probabilidad de ser bitmon 2 mayor a la de bitmon 1
-            else if (IP_bit2 > IP_bit1)
+            else
             {
                 if (IP_bit2 <= IP_hijo)
                 {
-                    //es de la clase bitmon 1
-                    Bitmon bitmon_hijo = new Bitmon(bitmon1.especie);
-                    bool a = true;
-                    bitmon1.Hijos += 1;
-                    while (a)
-                    {
-                        int fila = rnd.Next(0, filas + 1);
-                        int colun = rnd.Next(0, columnas + 1);
-                        try
-                        {
-                            if (bitmons_simulacion[colun, fila].Count < 2)
-                            {
-                                bitmons_simulacion[colun, fila].Add(bitmon_hijo);
-                                bitmons_s.Add(bitmon_hijo);
-                                a = false;
-                            }
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                    }
+                    //es de la clase bitmon 2
+                    hijo = bitmon2.especie;
+                    bitmon2.Hijos += 1;
                 }
                 else
                 {
-                    //es de la clase bitmon2
-                    Bitmon bitmon_hijo = new Bitmon(bitmon2.especie);
-                    bitmon2.Hijos += 1;
-                    bool a = true;
-                    while (a)
-                    { 
-                        int fila = rnd.Next(0, filas + 1);
-                        int colun = rnd.Next(0, columnas + 1);
-                        try
-                        {
-                            if (bitmons_simulacion[colun, fila].Count < 2)
-                            {
-                                bitmons_simulacion[colun, fila].Add(bitmon_hijo);
-                                bitmons_s.Add(bitmon_hijo);
-                                a = false;
-                            }
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                    }
+                    //es de la clase bitmon 1
+                    hijo = bitmon1.especie;
+                    bitmon1.Hijos += 1;
                 }
                 bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
                 bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
             }
-
+            Bitmon bitmon_hijo = new Bitmon(hijo);
+            bool a = true;
+            while (a == true)
+            {
+                int fila = rnd.Next(0, filas - 1);
+                int colun = rnd.Next(0, columnas - 1);
+                if (bitmons_simulacion[fila, colun].Count <= 2)
+                {
+                    bitmons_simulacion[colun, fila].Add(bitmon_hijo);
+                    bitmons_s.Add(bitmon_hijo);
+                    a = false;
+                }
+                else
+                {
+                    continue;
+                }
+            }
         }
-
 
 
         //tiempo de vida menor o igual a cero se va al cielo
         public void Bithalla()
         {
-            List<Bitmon> bits = new List<Bitmon> { };
-            foreach (Bitmon bit in bitmons_s)
-            {
-                bits.Add(bit);
-            }
-
-            foreach (Bitmon bitmon in bits)
+            foreach (Bitmon bitmon in bitmons_s)
             {
                 if (bitmon.TiempoVida <= 0)
                 {
@@ -384,7 +379,7 @@ namespace Bitmons1
                     {
                         for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
                         {
-                            if (bitmons_simulacion[i,j].Contains(bitmon))
+                            if (bitmons_simulacion[i, j].Contains(bitmon))
                             {
                                 bitmons_simulacion[i, j].Remove(bitmon);
                             }
@@ -397,6 +392,5 @@ namespace Bitmons1
                 }
             }
         }
-
     }
 }
