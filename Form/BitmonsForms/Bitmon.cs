@@ -29,7 +29,7 @@ namespace BitmonsForms
 
             if (especie == "Taplan")
             {
-                max = 350;
+                max = 35;
                 min = 5;
                 rivalidad = new List<string> { "Wetar", "Gofue" };
                 debilidad = new List<string> { "Acuatico", "Nieve", "Volcan" };
@@ -39,7 +39,7 @@ namespace BitmonsForms
 
             if (especie == "Wetar")
             {
-                max = 250;
+                max = 25;
                 min = 20;
                 rivalidad = new List<string> { "Dorvalo", "Taplan", "Gofue" };
                 debilidad = new List<string> { "Vegetacion", "Desierto", "Nieve" };
@@ -48,7 +48,7 @@ namespace BitmonsForms
             }
             if (especie == "Gofue")
             {
-                max = 300;
+                max = 30;
                 min = 10;
                 rivalidad = new List<string> { "Wetar", "Taplan" };
                 debilidad = new List<string> { "Acuatico" };
@@ -57,7 +57,7 @@ namespace BitmonsForms
             }
             if (especie == "Dorvalo")
             {
-                max = 450;
+                max = 45;
                 min = 20;
                 rivalidad = new List<string> { "Ent", "Wetar" };
                 debilidad = new List<string> { "ninguno" };
@@ -67,7 +67,7 @@ namespace BitmonsForms
             }
             if (especie == "Doti")
             {
-                max = 400;
+                max = 40;
                 min = 15;
                 rivalidad = new List<string> { "Ent" };
                 debilidad = new List<string> { "ninguno" };
@@ -76,8 +76,8 @@ namespace BitmonsForms
             }
             if (especie == "Ent")
             {
-                max = 200;
-                min = 0;
+                max = 20;
+                min = 5;
                 rivalidad = new List<string> { "Doti", "Dorvalo" };
                 debilidad = new List<string> { "Volcan", "Acuatico" };
                 afinidad = new List<string> { "Vegetacion", "Desierto", "Nieve" };

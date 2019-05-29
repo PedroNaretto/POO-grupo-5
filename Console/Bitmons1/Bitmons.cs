@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bitmons1
+namespace BitmonsForms
 {
     public class Bitmons
     {
@@ -20,6 +20,22 @@ namespace Bitmons1
         //constructor de Bitmons
         public Bitmons()
         {
+        }
+
+        //para conseguir el array de bitmons
+        public List<Bitmon>[,] GetArray()
+        {
+            return bitmons_simulacion;
+        }
+        //para conseguir la lista de bitmons en bithalla
+        public List<Bitmon> GetBithalla()
+        {
+            return bithalla;
+        }
+        //para conseguir la lista de bitmons
+        public List<Bitmon> GetLista()
+        {
+            return bitmons_s;
         }
 
         public string MostrarBitmons(List<Bitmon> bitmons)
@@ -201,6 +217,7 @@ namespace Bitmons1
         }
 
         //relacion de pelea entre bitmons
+        //relacion de pelea entre bitmons
         public void Peleas(Bitmon bitmon1, Bitmon bitmon2)
         {
             //bitmon ataque simultaneo
@@ -298,29 +315,29 @@ namespace Bitmons1
         {
             //probabilidad de la especie del hijo
             int IP_hijo = rnd.Next(0, 101);
-            string hijo;
             //para calcular la probabilidad que sea de un padre o el otro
             int total = bitmon1.Hijos + bitmon2.Hijos + 2;
             int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
             int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
+
+            string hijo;
 
             //probabilidad de ser bitmon 1 mayor a la de bitmon 2
             if (IP_bit1 >= IP_bit2)
             {
                 if (IP_bit1 <= IP_hijo)
                 {
-                    //es de la clase bitmon 1
-                    hijo = bitmon1.especie;
-                    bitmon1.Hijos += 1;
-                }
-                else
-                {
                     //es de la clase bitmon 2
                     hijo = bitmon2.especie;
                     bitmon2.Hijos += 1;
                 }
-                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+                else
+                {
+                    //es de la clase bitmon 1
+                    hijo = bitmon1.especie;
+                    bitmon1.Hijos += 1;
+                }
+
             }
 
             //probabilidad de ser bitmon 2 mayor a la de bitmon 1
@@ -328,19 +345,21 @@ namespace Bitmons1
             {
                 if (IP_bit2 <= IP_hijo)
                 {
-                    //es de la clase bitmon 2
-                    hijo = bitmon2.especie;
-                    bitmon2.Hijos += 1;
-                }
-                else
-                {
                     //es de la clase bitmon 1
                     hijo = bitmon1.especie;
                     bitmon1.Hijos += 1;
                 }
-                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+                else
+                {
+                    //es de la clase bitmon 2
+                    hijo = bitmon2.especie;
+                    bitmon2.Hijos += 1;
+                }
             }
+
+            bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+            bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+
             Bitmon bitmon_hijo = new Bitmon(hijo);
             bool a = true;
             while (a == true)

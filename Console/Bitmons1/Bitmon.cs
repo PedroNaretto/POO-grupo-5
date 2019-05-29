@@ -173,6 +173,5 @@ namespace Bitmons1
             }  
                 return multiplicador ;
         }
-
     }
 }
