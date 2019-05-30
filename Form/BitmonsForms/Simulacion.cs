@@ -82,65 +82,74 @@ namespace BitmonsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (contador % 3 == 0 && contador != 0)
+            if (contador < meses)
             {
-                Bitmon bitmon = new Bitmon("Ent");
-                while (true)
+                if (contador % 3 == 0 && contador != 0)
                 {
-                    int fila = rnd.Next(0, columnas);
-                    int colun = rnd.Next(0, filas);
-                    if (bitmons.bitmons_simulacion[colun, fila].Count() < 2)
+                    Bitmon bitmon = new Bitmon("Ent");
+                    while (true)
                     {
-                        bitmons.bitmons_simulacion[colun, fila].Add(bitmon);
-                        bitmons.bitmons_s.Add(bitmon);
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-            }
-            for (int i = 0; i < filas; i++)
-            {
-                for (int j = 0; j < columnas; j++)
-                {
-                    if (bitmons.bitmons_simulacion[i, j].Count() == 2)
-                    {
-                        Bitmon b1 = bitmons.bitmons_simulacion[i, j][0];
-                        Bitmon b2 = bitmons.bitmons_simulacion[i, j][1];
-                        if (b1.rivalidad.Contains(b2.especie))
+                        int fila = rnd.Next(0, columnas);
+                        int colun = rnd.Next(0, filas);
+                        if (bitmons.bitmons_simulacion[colun, fila].Count() < 2)
                         {
-                            bitmons.Peleas(b1, b2);
+                            bitmons.bitmons_simulacion[colun, fila].Add(bitmon);
+                            bitmons.bitmons_s.Add(bitmon);
+                            break;
                         }
                         else
                         {
-                            bitmons.Relaciones(b1, b2, filas, columnas);
+                            continue;
                         }
                     }
                 }
 
-            }
-            controlador.Entorno(mapa, bitmons);
-            bitmons.Bithalla();
-            bitmons.movimientos(mapa);
-
-            TableLayoutPanelCellPosition posicion;
-            foreach (Button boton in MapaSimulacion.Controls)
-            {
-                posicion = MapaSimulacion.GetPositionFromControl(boton);
-                int i = posicion.Row;
-                int j = posicion.Column;
-                string texto = "";
-                foreach(Bitmon bitmon in bitmons.bitmons_simulacion[i, j])
+                for (int i = 0; i < filas; i++)
                 {
-                    texto += $"{bitmon.especie}\n";
+                    for (int j = 0; j < columnas; j++)
+                    {
+                        if (bitmons.bitmons_simulacion[i, j].Count() == 2)
+                        {
+                            Bitmon b1 = bitmons.bitmons_simulacion[i, j][0];
+                            Bitmon b2 = bitmons.bitmons_simulacion[i, j][1];
+                            if (b1.rivalidad.Contains(b2.especie))
+                            {
+                                bitmons.Peleas(b1, b2);
+                            }
+                            else
+                            {
+                                bitmons.Relaciones(b1, b2, filas, columnas);
+                            }
+                        }
+                    }
+
                 }
-                boton.Text = texto;
-                boton.Tag = mapa.Mterrenos[i, j].tipo;
-                boton.BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
+                controlador.Entorno(mapa, bitmons);
+                bitmons.Bithalla();
+                bitmons.movimientos(mapa);
+
+                TableLayoutPanelCellPosition posicion;
+                foreach (Button boton in MapaSimulacion.Controls)
+                {
+                    posicion = MapaSimulacion.GetPositionFromControl(boton);
+                    int i = posicion.Row;
+                    int j = posicion.Column;
+                    string texto = "";
+                    foreach (Bitmon bitmon in bitmons.bitmons_simulacion[i, j])
+                    {
+                        texto += $"{bitmon.especie}\n";
+                    }
+                    boton.Text = texto;
+                    boton.Tag = mapa.Mterrenos[i, j].tipo;
+                    boton.BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
+                }
+                contador += 1;
             }
-            contador += 1;
+            else
+            {
+                Resultados resultados = new Resultados(bitmons);
+                resultados.Show();
+            }
         }
     }
 }
