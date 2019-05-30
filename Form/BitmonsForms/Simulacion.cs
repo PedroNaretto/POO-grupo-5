@@ -84,6 +84,10 @@ namespace BitmonsForms
         {
             if (contador < meses)
             {
+                if (contador == meses - 1)
+                {
+                    button1.Text = "Pasar a resultados";
+                }
                 label1.Text = $"Mes {contador + 1}";
                 if (contador % 3 == 0 && contador != 0 && bitmons.RevisarMapa())
                 {
