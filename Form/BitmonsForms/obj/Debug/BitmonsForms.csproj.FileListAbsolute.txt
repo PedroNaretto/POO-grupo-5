@@ -48,3 +48,5 @@ C:\Users\santi\OneDrive\Escritorio\POO-grupo-5\Form\BitmonsForms\obj\Debug\Bitmo
 C:\Users\santi\OneDrive\Escritorio\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Simulacion.resources
 C:\Users\santi\OneDrive\Escritorio\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csproj.GenerateResource.cache
 C:\Users\santi\OneDrive\Escritorio\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Escritorio\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Resultados.resources
+C:\Users\Pedro\Desktop\UAndes\Progra orientada a objetos\Second attempt\Proyecto\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.Resultados.resources

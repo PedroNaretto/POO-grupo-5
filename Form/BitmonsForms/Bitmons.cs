@@ -172,23 +172,38 @@ namespace BitmonsForms
                                 {
                                     int m1 = rnd.Next(-1, 2);
                                     int m2 = rnd.Next(-1, 2);
-                                    int m3 = rnd.Next(-1, 2);
-                                    int m4 = rnd.Next(-1, 2);
                                     try
                                     {
                                         if (bit_mov[i + m1, j + m2].Count() < 2)
                                         {
-                                            try
+                                            if(RevisarAlrededores(bit_mov, i + m1, j + m2))
                                             {
-                                                if (bit_mov[i + m1 + m3, j + m2 + m4].Count < 2)
+                                                while (true)
                                                 {
-                                                    bit_mov[i + m1 + m3, j + m2 + m4].Add(bitmon);
+                                                    int m3 = rnd.Next(-1, 2);
+                                                    int m4 = rnd.Next(-1, 2);
+                                                    try
+                                                    {
+                                                        if (bit_mov[i + m1 + m3, j + m2 + m4].Count() < 2)
+                                                        {
+                                                            bit_mov[i + m1 + m3, j + m2 + m4].Add(bitmon);
+                                                            break;
+                                                        }
+                                                    }
+                                                    catch { }
                                                 }
+                                                break;
                                             }
-                                            catch { }
-                                            bit_mov[i + m1, j + m2].Add(bitmon);
+                                            else
+                                            {
+                                                bit_mov[i + m1, j + m2].Add(bitmon);
+                                                break;
+                                            }
                                         }
-                                        m -= 1;
+                                        else
+                                        {
+                                            break;
+                                        }
                                     }
                                     catch
                                     {
@@ -224,6 +239,7 @@ namespace BitmonsForms
                         }
                         else
                         {
+                            bit_mov[i, j].Add(bitmon);
                             continue;
                         }
                     }
@@ -329,6 +345,8 @@ namespace BitmonsForms
         //luego de reproducirse recuperan el 30% de tiempo de vida
         public void Relaciones(Bitmon bitmon1, Bitmon bitmon2, int filas, int columnas)
         {
+            if (RevisarMapa())
+            {
                 //probabilidad de la especie del hijo
                 int IP_hijo = rnd.Next(0, 101);
                 //para calcular la probabilidad que sea de un padre o el otro
@@ -336,7 +354,7 @@ namespace BitmonsForms
                 int IP_bit1 = ((bitmon1.Hijos + 1) * 100) / total;
                 int IP_bit2 = ((bitmon2.Hijos + 1) * 100) / total;
 
-            string hijo;
+                string hijo;
 
                 //probabilidad de ser bitmon 1 mayor a la de bitmon 2
                 if (IP_bit1 >= IP_bit2)
@@ -349,9 +367,9 @@ namespace BitmonsForms
                     }
                     else
                     {
-                    //es de la clase bitmon 1
-                    hijo = bitmon1.especie;
-                    bitmon1.Hijos += 1;
+                        //es de la clase bitmon 1
+                        hijo = bitmon1.especie;
+                        bitmon1.Hijos += 1;
                     }
 
                 }
@@ -373,10 +391,10 @@ namespace BitmonsForms
                     }
                 }
 
-            bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
-            bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
+                bitmon1.TiempoVida += (bitmon1.TiempoVida) * (30 / 100);
+                bitmon2.TiempoVida += (bitmon2.TiempoVida) * (30 / 100);
 
-            Bitmon bitmon_hijo = new Bitmon(hijo);
+                Bitmon bitmon_hijo = new Bitmon(hijo);
                 bool a = true;
                 while (a == true)
                 {
@@ -393,6 +411,7 @@ namespace BitmonsForms
                         continue;
                     }
                 }
+            }
         }
 
 
@@ -463,7 +482,6 @@ namespace BitmonsForms
                     }
                 }
             }
-
             return false;
         }
     }
