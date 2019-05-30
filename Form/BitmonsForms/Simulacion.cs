@@ -141,7 +141,6 @@ namespace BitmonsForms
                 boton.BackColor = mapa.MostrarMapa(mapa.Mterrenos[i, j].tipo);
             }
             contador += 1;
-            label1.Text =  contador.ToString();
         }
     }
 }
