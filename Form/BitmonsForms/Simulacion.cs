@@ -84,7 +84,8 @@ namespace BitmonsForms
         {
             if (contador < meses)
             {
-                if (contador % 3 == 0 && contador != 0)
+                label1.Text = $"Mes {contador + 1}";
+                if (contador % 3 == 0 && contador != 0 && bitmons.RevisarMapa())
                 {
                     Bitmon bitmon = new Bitmon("Ent");
                     while (true)

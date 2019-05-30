@@ -472,9 +472,9 @@ namespace BitmonsForms
 
         public bool RevisarMapa()
         {
-            for(int i = 0; i < bitmons_simulacion.GetUpperBound(0); i++)
+            for(int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
-                for(int j = 0; j < bitmons_simulacion.GetUpperBound(1); j++)
+                for(int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
                 {
                     if (bitmons_simulacion[i,j].Count < 2)
                     {
