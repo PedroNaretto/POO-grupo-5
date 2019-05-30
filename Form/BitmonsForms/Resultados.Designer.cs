@@ -52,7 +52,7 @@
             // 
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(324, 46);
+            this.listView1.Size = new System.Drawing.Size(324, 69);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -87,8 +87,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(583, 725);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -98,18 +98,18 @@
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(333, 633);
+            this.label8.Location = new System.Drawing.Point(333, 643);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(247, 92);
+            this.label8.Size = new System.Drawing.Size(247, 82);
             this.label8.TabIndex = 15;
             this.label8.Text = "Cantidad hijos promedio por especie";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listView8
             // 
-            this.listView8.Location = new System.Drawing.Point(3, 537);
+            this.listView8.Location = new System.Drawing.Point(3, 560);
             this.listView8.Name = "listView8";
-            this.listView8.Size = new System.Drawing.Size(324, 92);
+            this.listView8.Size = new System.Drawing.Size(324, 80);
             this.listView8.TabIndex = 14;
             this.listView8.UseCompatibleStateImageBehavior = false;
             this.listView8.SelectedIndexChanged += new System.EventHandler(this.ListView8_SelectedIndexChanged);
@@ -119,9 +119,9 @@
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(333, 534);
+            this.label7.Location = new System.Drawing.Point(333, 557);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(247, 99);
+            this.label7.Size = new System.Drawing.Size(247, 86);
             this.label7.TabIndex = 13;
             this.label7.Text = "Porcentaje de bitmons en bithalla";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,7 +131,7 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(333, 428);
+            this.label6.Location = new System.Drawing.Point(333, 451);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(247, 106);
             this.label6.TabIndex = 12;
@@ -143,7 +143,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(333, 331);
+            this.label5.Location = new System.Drawing.Point(333, 354);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(247, 97);
             this.label5.TabIndex = 11;
@@ -155,7 +155,7 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(333, 234);
+            this.label4.Location = new System.Drawing.Point(333, 257);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(247, 97);
             this.label4.TabIndex = 10;
@@ -167,7 +167,7 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(333, 134);
+            this.label3.Location = new System.Drawing.Point(333, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(247, 100);
             this.label3.TabIndex = 9;
@@ -176,7 +176,7 @@
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(3, 55);
+            this.listView2.Location = new System.Drawing.Point(3, 78);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(324, 76);
             this.listView2.TabIndex = 1;
@@ -185,7 +185,7 @@
             // 
             // listView3
             // 
-            this.listView3.Location = new System.Drawing.Point(3, 137);
+            this.listView3.Location = new System.Drawing.Point(3, 160);
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(324, 94);
             this.listView3.TabIndex = 2;
@@ -194,7 +194,7 @@
             // 
             // listView6
             // 
-            this.listView6.Location = new System.Drawing.Point(3, 237);
+            this.listView6.Location = new System.Drawing.Point(3, 260);
             this.listView6.Name = "listView6";
             this.listView6.Size = new System.Drawing.Size(324, 91);
             this.listView6.TabIndex = 5;
@@ -203,7 +203,7 @@
             // 
             // listView5
             // 
-            this.listView5.Location = new System.Drawing.Point(3, 334);
+            this.listView5.Location = new System.Drawing.Point(3, 357);
             this.listView5.Name = "listView5";
             this.listView5.Size = new System.Drawing.Size(324, 91);
             this.listView5.TabIndex = 4;
@@ -212,7 +212,7 @@
             // 
             // listView4
             // 
-            this.listView4.Location = new System.Drawing.Point(3, 431);
+            this.listView4.Location = new System.Drawing.Point(3, 454);
             this.listView4.Name = "listView4";
             this.listView4.Size = new System.Drawing.Size(324, 100);
             this.listView4.TabIndex = 3;
@@ -221,9 +221,9 @@
             // 
             // listView7
             // 
-            this.listView7.Location = new System.Drawing.Point(3, 636);
+            this.listView7.Location = new System.Drawing.Point(3, 646);
             this.listView7.Name = "listView7";
-            this.listView7.Size = new System.Drawing.Size(324, 86);
+            this.listView7.Size = new System.Drawing.Size(324, 76);
             this.listView7.TabIndex = 6;
             this.listView7.UseCompatibleStateImageBehavior = false;
             this.listView7.SelectedIndexChanged += new System.EventHandler(this.ListView7_SelectedIndexChanged);
@@ -235,7 +235,7 @@
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(333, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 52);
+            this.label1.Size = new System.Drawing.Size(247, 75);
             this.label1.TabIndex = 7;
             this.label1.Text = "Tiempo vida promedio de los bitmons";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -245,7 +245,7 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(333, 52);
+            this.label2.Location = new System.Drawing.Point(333, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(247, 82);
             this.label2.TabIndex = 8;
