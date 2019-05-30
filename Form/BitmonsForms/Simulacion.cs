@@ -148,7 +148,9 @@ namespace BitmonsForms
             else
             {
                 Resultados resultados = new Resultados(bitmons);
-                resultados.Show();
+                this.Hide();
+                resultados.ShowDialog();
+                this.Close();
             }
         }
     }

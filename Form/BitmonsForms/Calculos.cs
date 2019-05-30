@@ -9,7 +9,6 @@ namespace BitmonsForms
     class Calculos
     {
 
-
         public double TiempoVidaPromedio(Bitmons bitmons)
         {
             double suma_tiempovida = 0;

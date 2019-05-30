@@ -24,8 +24,8 @@ namespace BitmonsForms
 
         private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            double tiempo_vida_promedio = calculos.TiempoVidaPromedio(bitmons);
-            listView1.Items.Add(new ListViewItem(new string[] { Convert.ToString(tiempo_vida_promedio) }));
+            string tiempo_vida_promedio = Convert.ToString(calculos.TiempoVidaPromedio(bitmons));
+            listView1.Items.Add(new ListViewItem(new string[] { tiempo_vida_promedio}));
         }
 
         private void ListView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,7 +35,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView2.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(vida_promedio_especie[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string vida_prom = Convert.ToString(vida_promedio_especie[i]);
+                    listView2.Items.Add(new ListViewItem(new string[] { especie, ":", vida_prom }));
                 }
             }
         }
@@ -47,7 +49,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView3.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(tasa_nat_especie[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string tasa_nat = Convert.ToString(tasa_nat_especie[i]);
+                    listView3.Items.Add(new ListViewItem(new string[] { especie, ":", tasa_nat }));
                 }
             }
         }
@@ -59,7 +63,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView6.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(tasa_mort_especie[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string tasa_mort = Convert.ToString(tasa_mort_especie[i]);
+                    listView6.Items.Add(new ListViewItem(new string[] { especie, ":", tasa_mort }));
                 }
             }
         }
@@ -71,7 +77,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView5.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(extintas_especies[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string extinta = Convert.ToString(extintas_especies[i]);
+                    listView5.Items.Add(new ListViewItem(new string[] { especie, ":", extinta }));
                 }
             }
         }
@@ -83,7 +91,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView4.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(cantidad_bit[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string bitmon_bit = Convert.ToString(cantidad_bit[i]);
+                    listView4.Items.Add(new ListViewItem(new string[] { especie, ":", bitmon_bit }));
                 }
             }
         }
@@ -95,7 +105,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView7.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(porcentaje_bit[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string porcentaje = Convert.ToString(porcentaje_bit[i]);
+                    listView7.Items.Add(new ListViewItem(new string[] { especie, ":", porcentaje }));
                 }
             }
         }
@@ -107,7 +119,9 @@ namespace BitmonsForms
             {
                 for (int j = 0; j < especies.Count; j++)
                 {
-                    listView8.Items.Add(new ListViewItem(new string[] { especies[j], ":", Convert.ToString(hijos_promedio[i]) }));
+                    string especie = Convert.ToString(especies[j]);
+                    string hijos = Convert.ToString(hijos_promedio[i]);
+                    listView8.Items.Add(new ListViewItem(new string[] { especie, ":", hijos }));
                 }
             }
         }
