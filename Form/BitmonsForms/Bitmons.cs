@@ -22,21 +22,6 @@ namespace BitmonsForms
         {
         }
 
-        //para conseguir el array de bitmons
-        public List<Bitmon>[,] GetArray()
-        {
-            return bitmons_simulacion;
-        }
-        //para conseguir la lista de bitmons en bithalla
-        public List<Bitmon> GetBithalla()
-        {
-            return bithalla;
-        }
-        //para conseguir la lista de bitmons
-        public List<Bitmon> GetLista()
-        {
-            return bitmons_s;
-        }
 
         public string MostrarBitmons(List<Bitmon> bitmons)
         {
