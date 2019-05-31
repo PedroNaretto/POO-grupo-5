@@ -14,7 +14,7 @@ namespace BitmonsForms
     {
         Random rnd = new Random();
         Controlador controlador = new Controlador();
-        int contador = 0;
+        int contador = 1;
         Bitmons bitmons;
         Mapa mapa;
         int filas;
@@ -82,13 +82,13 @@ namespace BitmonsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (contador < meses)
+            if (contador <= meses)
             {
-                if (contador == meses - 1)
+                if (contador == meses)
                 {
                     button1.Text = "Pasar a resultados";
                 }
-                label1.Text = $"Mes {contador + 1}";
+                label1.Text = $"Mes {contador}";
                 if (contador % 3 == 0 && contador != 0 && bitmons.RevisarMapa())
                 {
                     Bitmon bitmon = new Bitmon("Ent");

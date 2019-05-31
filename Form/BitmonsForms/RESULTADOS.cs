@@ -91,7 +91,7 @@ namespace BitmonsForms
             }
             for (int i = 0; i < resultado_5.Count; i++)
             {  
-                    richTextBox5.Text += especies[i] + ":" + resultado_5[i] + "\n";
+                    richTextBox5.Text +=  resultado_5[i] + "\n";
 
             }
 
