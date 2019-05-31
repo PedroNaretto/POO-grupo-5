@@ -22,107 +22,128 @@ namespace BitmonsForms
             this.bitmons = bitmons;
         }
 
-        private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string tiempo_vida_promedio = Convert.ToString(calculos.TiempoVidaPromedio(bitmons));
-            listView1.Items.Add(new ListViewItem(new string[] { tiempo_vida_promedio}));
-        }
 
-        private void ListView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            //tiempo vida promedio de bitmons
+            string tiempo_vida_promedio = Convert.ToString(calculos.TiempoVidaPromedio(bitmons));
+            richTextBox1.Text = tiempo_vida_promedio + "  meses";
+
+            //tiempo de vida promedio por especie
+            List<string> resultado_2 = new List<string>();
             List<double> vida_promedio_especie = calculos.TiempoVidaPromedio_especie(bitmons);
             for (int i = 0; i < vida_promedio_especie.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
+                string vida_prom = Convert.ToString(vida_promedio_especie[i]);
+                if (vida_prom == "NaN")
                 {
-                    string especie = Convert.ToString(especies[j]);
-                    string vida_prom = Convert.ToString(vida_promedio_especie[i]);
-                    listView2.Items.Add(new ListViewItem(new string[] { especie, ":", vida_prom }));
+                    vida_prom = "0";
                 }
+                    resultado_2.Add(vida_prom);
             }
-        }
+            for (int i = 0; i < resultado_2.Count; i ++)
+            {
+                    richTextBox2.Text += especies[i] + ":" + resultado_2[i] + "\n";
+            }
 
-        private void ListView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            //tasa natalidad por especie
+            List<string> resultado_3 = new List<string>();
             List<double> tasa_nat_especie = calculos.TasaNatalidad_especie(bitmons);
             for (int i = 0; i < tasa_nat_especie.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
+                string tasa_nat = Convert.ToString(tasa_nat_especie[i]);
+                if (tasa_nat == "NaN")
                 {
-                    string especie = Convert.ToString(especies[j]);
-                    string tasa_nat = Convert.ToString(tasa_nat_especie[i]);
-                    listView3.Items.Add(new ListViewItem(new string[] { especie, ":", tasa_nat }));
+                    tasa_nat = "0";
                 }
+                resultado_3.Add(tasa_nat);
             }
-        }
+            for (int i = 0; i < resultado_3.Count; i++)
+            {
 
-        private void ListView6_SelectedIndexChanged(object sender, EventArgs e)
-        {
+                    richTextBox3.Text += especies[i] + ":" + resultado_3[i] + "\n";
+            }
+
+            //tasa mortalidad por especie 
+            List<string> resultado_4 = new List<string>();
             List<double> tasa_mort_especie = calculos.TasaMortalidad_especie(bitmons);
             for (int i = 0; i < tasa_mort_especie.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
+                string tasa_mort = Convert.ToString(tasa_mort_especie[i]);
+                if (tasa_mort == "NaN")
                 {
-                    string especie = Convert.ToString(especies[j]);
-                    string tasa_mort = Convert.ToString(tasa_mort_especie[i]);
-                    listView6.Items.Add(new ListViewItem(new string[] { especie, ":", tasa_mort }));
+                    tasa_mort = "0";
                 }
+                resultado_4.Add(tasa_mort);
             }
-        }
+            for (int i = 0; i < resultado_4.Count; i++)
+            {
+                    richTextBox4.Text += especies[i] + ":" + resultado_4[i] + "\n";
+            }
 
-        private void ListView5_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            //especies extintas
+            List<string> resultado_5 = new List<string>();
             List<string> extintas_especies = calculos.EspeciesExtintas();
             for (int i = 0; i < extintas_especies.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
-                {
-                    string especie = Convert.ToString(especies[j]);
-                    string extinta = Convert.ToString(extintas_especies[i]);
-                    listView5.Items.Add(new ListViewItem(new string[] { especie, ":", extinta }));
-                }
+                string extinta = Convert.ToString(extintas_especies[i]);
+                resultado_5.Add(extinta);
             }
-        }
+            for (int i = 0; i < resultado_5.Count; i++)
+            {  
+                    richTextBox5.Text += especies[i] + ":" + resultado_5[i] + "\n";
 
-        private void ListView4_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            }
+
+            //cantidad bitmons en bithalla
+            List<string> resultado_6 = new List<string>();
             List<double> cantidad_bit = calculos.PoblacionBithalla();
             for (int i = 0; i < cantidad_bit.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
+                string bitmon_bit = Convert.ToString(cantidad_bit[i]);
+                if (bitmon_bit == "NaN")
                 {
-                    string especie = Convert.ToString(especies[j]);
-                    string bitmon_bit = Convert.ToString(cantidad_bit[i]);
-                    listView4.Items.Add(new ListViewItem(new string[] { especie, ":", bitmon_bit }));
+                    bitmon_bit = "0";
                 }
+                resultado_6.Add(bitmon_bit);
             }
-        }
+            for (int i = 0; i < resultado_6.Count; i++)
+            {
+                    richTextBox6.Text += especies[i] + ":" + resultado_6[i] + "\n";
+            }
 
-        private void ListView7_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            //porcentaje bitmons en bithalla
+            List<string> resultado_7 = new List<string>();
             List<double> porcentaje_bit = calculos.PorcentajeBithalla();
             for (int i = 0; i < porcentaje_bit.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
+                string porcentaje = Convert.ToString(porcentaje_bit[i]);
+                if (porcentaje == "NaN")
                 {
-                    string especie = Convert.ToString(especies[j]);
-                    string porcentaje = Convert.ToString(porcentaje_bit[i]);
-                    listView7.Items.Add(new ListViewItem(new string[] { especie, ":", porcentaje }));
+                    porcentaje = "0";
                 }
+                resultado_7.Add(porcentaje);
             }
-        }
+            for (int i = 0; i < resultado_7.Count; i++)
+            {
+                    richTextBox7.Text += especies[i] + ":" + resultado_7[i] + "\n";
+            }
 
-        private void ListView8_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            //cantidad hijos promedio por especie
+            List<string> resultado_8 = new List<string>();
             List<double> hijos_promedio = calculos.CantidadHijos_especie();
             for (int i = 0; i < hijos_promedio.Count; i++)
             {
-                for (int j = 0; j < especies.Count; j++)
+                string hijos = Convert.ToString(hijos_promedio[i]);
+                if (hijos == "NaN")
                 {
-                    string especie = Convert.ToString(especies[j]);
-                    string hijos = Convert.ToString(hijos_promedio[i]);
-                    listView8.Items.Add(new ListViewItem(new string[] { especie, ":", hijos }));
+                    hijos = "0";
                 }
+                resultado_8.Add(hijos);
+            }
+            for (int i = 0; i < resultado_8.Count; i++)
+            {
+                    richTextBox8.Text += especies[i] + ":" + resultado_8[i] + "\n";
             }
         }
 
