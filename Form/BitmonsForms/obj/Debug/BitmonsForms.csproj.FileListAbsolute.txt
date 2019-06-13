@@ -64,3 +64,6 @@ C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.cspr
 C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csproj.CoreCompileInputs.cache
 C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.exe
 C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.pdb
+C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\bin\Debug\PluginClase.dll
+C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\bin\Debug\PluginClase.pdb
+C:\Users\santi\Desktop\POO-grupo-5\Form\BitmonsForms\obj\Debug\BitmonsForms.csproj.CopyComplete

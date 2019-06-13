@@ -37,6 +37,9 @@
             this.botonInicioSimulacion = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.botonSalir = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumeroFilas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumeroColumnas)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -48,9 +51,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("MS PGothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 47);
+            this.label1.Location = new System.Drawing.Point(209, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(394, 27);
+            this.label1.Size = new System.Drawing.Size(388, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "¡Bienvenido a Bitmonlandia!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,9 +63,9 @@
             this.label2.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.label2, 2);
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Location = new System.Drawing.Point(203, 142);
+            this.label2.Location = new System.Drawing.Point(209, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(394, 26);
+            this.label2.Size = new System.Drawing.Size(388, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tamaño del mapa:\r\n\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -137,8 +140,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -150,6 +153,9 @@
             this.tableLayoutPanel1.Controls.Add(this.botonInicioSimulacion, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.NumeroFilas, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.botonSalir, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 2, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -173,6 +179,39 @@
             this.botonSalir.Text = "Salir";
             this.botonSalir.UseVisualStyleBackColor = true;
             this.botonSalir.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(3, 350);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 97);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Cargar Plugin";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(103, 347);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 103);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Nombre del Plugin :";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(209, 347);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(188, 103);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "...";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Inicio
             // 
@@ -201,6 +240,9 @@
         private System.Windows.Forms.Button botonInicioSimulacion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button botonSalir;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

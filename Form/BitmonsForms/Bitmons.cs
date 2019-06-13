@@ -116,14 +116,14 @@ namespace BitmonsForms
             List<Bitmon>[,] bit_mov = new List<Bitmon>[bitmons_simulacion.GetUpperBound(0) + 1, bitmons_simulacion.GetUpperBound(1) + 1];
             for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
-                for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
+                for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
                 {
                     bit_mov[i, j] = new List<Bitmon> { };
                 }
             }
             for (int i = 0; i <= bitmons_simulacion.GetUpperBound(0); i++)
             {
-                for (int j = 0; j <= bitmons_simulacion.GetUpperBound(0); j++)
+                for (int j = 0; j <= bitmons_simulacion.GetUpperBound(1); j++)
                 {
                     foreach (Bitmon bitmon in bitmons_simulacion[i, j])
                     {

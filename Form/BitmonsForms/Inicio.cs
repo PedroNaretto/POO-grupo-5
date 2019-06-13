@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PluginClase;
+using System.IO;
+using System.Reflection;
 
 namespace BitmonsForms
 {
@@ -36,6 +39,30 @@ namespace BitmonsForms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                Assembly.LoadFrom(open.FileName);
+                foreach(Assembly a in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    foreach(Type t in a.GetTypes())
+                    {
+                        if (t.GetInterface("Plugin") != null)
+                            {
+                            IPlugin p = Activator.CreateInstance(t) as IPlugin;
+                            label5.Text = p.PluginName();
+                            p.run();
+                            }
+                            
+
+                        
+                    }
+                }
+            }
         }
     }
 }
